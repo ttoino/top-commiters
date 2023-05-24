@@ -29,5 +29,11 @@
 		"typescript": "^5.0.0",
 		"vite": "^4.3.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@primer/css": "^21.0.1",
+		"@primer/octicons": "^19.1.0",
+		"isomorphic-fetch": "^3.0.0",
+		"octokit": "^2.0.18"
+	}
 }
