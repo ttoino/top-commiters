@@ -19,7 +19,7 @@
                 <li class="Box-row d-flex flex-row flex-items-center">
                     <span class="Label mr-3">{i + 1}</span>
                     <img
-                        src={user.avatarUrl}
+                        src={user.avatar}
                         alt=""
                         class="avatar mr-3"
                         width="32"
@@ -30,8 +30,8 @@
                         {user.name}
                     </a>
                     <span class="Counter">
-                        {@html octicons["git-commit"].toSVG()}
-                        {user.commits}
+                        {@html octicons["repo-push"].toSVG()}
+                        {user.contributions}
                     </span>
                 </li>
             {/each}
