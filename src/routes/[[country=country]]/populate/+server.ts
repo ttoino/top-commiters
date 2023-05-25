@@ -1,8 +1,9 @@
 import { connect } from "$lib/db";
 import { getOctokit } from "$lib/gh";
-import User, { type IUser } from "$lib/models/User";
+import User, { countryModels, type IUser } from "$lib/models/User";
 import type mongoose from "mongoose";
 import type { PageServerLoad } from "../$types";
+import countries from "$lib/countries.json";
 
 interface Search {
     search: {
@@ -30,8 +31,16 @@ interface Search {
     };
 }
 
-export const GET: PageServerLoad = async () => {
+export const GET: PageServerLoad = async ({ params }) => {
     const octokit = await getOctokit();
+
+    const country = params.country?.toUpperCase() as
+        | keyof typeof countries
+        | undefined;
+
+    const q = country
+        ? `location:${countries[country].name}`
+        : "";
 
     const users: mongoose.Document<unknown, unknown, IUser>[] = [];
     let after = undefined;
@@ -40,8 +49,8 @@ export const GET: PageServerLoad = async () => {
     while (hasNextPage) {
         const search: Search = await octokit.graphql<Search>(
             `
-            query($after: String) {
-                search(query: "location:portugal", type: USER, after: $after, first: 25) {
+            query($after: String, $q: String!) {
+                search(query: $q, type: USER, after: $after, first: 25) {
                     pageInfo {
                         hasNextPage
                         endCursor
@@ -66,6 +75,7 @@ export const GET: PageServerLoad = async () => {
         `,
             {
                 after,
+                q,
             }
         );
 
@@ -73,45 +83,44 @@ export const GET: PageServerLoad = async () => {
         after = search.search.pageInfo.endCursor;
 
         users.push(
-            ...search.search.nodes
-                .map((u) => {
-                    const commits =
-                        u.contributionsCollection?.totalCommitContributions ??
-                        0;
-                    const issues =
-                        u.contributionsCollection?.totalIssueContributions ?? 0;
-                    const pullRequests =
-                        u.contributionsCollection
-                            ?.totalPullRequestContributions ?? 0;
-                    const reviews =
-                        u.contributionsCollection
-                            ?.totalPullRequestReviewContributions ?? 0;
-                    const contributions =
-                        commits + issues + pullRequests + reviews;
-                    const privateContributions =
-                        contributions +
-                        (u.contributionsCollection
-                            ?.restrictedContributionsCount ?? 0);
+            ...search.search.nodes.map((u) => {
+                const commits =
+                    u.contributionsCollection?.totalCommitContributions ?? 0;
+                const issues =
+                    u.contributionsCollection?.totalIssueContributions ?? 0;
+                const pullRequests =
+                    u.contributionsCollection?.totalPullRequestContributions ??
+                    0;
+                const reviews =
+                    u.contributionsCollection
+                        ?.totalPullRequestReviewContributions ?? 0;
+                const contributions = commits + issues + pullRequests + reviews;
+                const privateContributions =
+                    contributions +
+                    (u.contributionsCollection?.restrictedContributionsCount ??
+                        0);
 
-                    return new User({
-                        name: u.name,
-                        login: u.login,
-                        avatar: u.avatarUrl,
-                        url: u.url,
-                        commits,
-                        issues,
-                        pullRequests,
-                        reviews,
-                        contributions,
-                        privateContributions,
-                    });
-                })
+                return new User({
+                    name: u.name,
+                    login: u.login,
+                    avatar: u.avatarUrl,
+                    url: u.url,
+                    commits,
+                    issues,
+                    pullRequests,
+                    reviews,
+                    contributions,
+                    privateContributions,
+                });
+            })
         );
     }
 
+    const model = country ? countryModels[country] : User;
+
     await connect();
-    await User.deleteMany({});
-    await User.insertMany(users, { lean: true, ordered: false });
+    await model.deleteMany({});
+    await model.insertMany(users, { lean: true, ordered: false });
 
     return new Response(JSON.stringify(users), {
         headers: { "content-type": "application/json" },

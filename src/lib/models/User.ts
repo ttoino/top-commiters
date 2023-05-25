@@ -1,4 +1,5 @@
-import { Schema, type InferSchemaType, model } from "mongoose";
+import { Schema, type InferSchemaType, model, Model } from "mongoose";
+import countries from "$lib/countries.json";
 
 const schema = new Schema({
     name: {
@@ -45,5 +46,11 @@ const schema = new Schema({
 export type IUser = InferSchemaType<typeof schema>;
 
 const User = model("User", schema);
+
+export const countryModels: Record<keyof typeof countries, typeof User> =
+    Object.keys(countries).reduce((acc, country) => {
+        acc[country as keyof typeof countries] = model(country, schema);
+        return acc;
+    }, {} as Record<keyof typeof countries, typeof User>);
 
 export default User;
