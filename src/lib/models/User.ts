@@ -3,7 +3,6 @@ import { Schema, type InferSchemaType, model } from "mongoose";
 const schema = new Schema({
     name: {
         type: String,
-        required: true,
     },
     login: {
         type: String,
@@ -34,6 +33,10 @@ const schema = new Schema({
         required: true,
     },
     contributions: {
+        type: Number,
+        required: true,
+    },
+    privateContributions: {
         type: Number,
         required: true,
     },

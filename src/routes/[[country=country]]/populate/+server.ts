@@ -12,7 +12,7 @@ interface Search {
         };
         userCount: number;
         nodes: {
-            name: string;
+            name?: string;
             login: string;
             avatarUrl: string;
             url: string;
@@ -21,6 +21,7 @@ interface Search {
                 totalIssueContributions: number;
                 totalPullRequestContributions: number;
                 totalPullRequestReviewContributions: number;
+                restrictedContributionsCount: number;
             };
             followers: {
                 totalCount: number;
@@ -56,6 +57,7 @@ export const GET: PageServerLoad = async () => {
                                 totalIssueContributions
                                 totalPullRequestContributions
                                 totalPullRequestReviewContributions
+                                restrictedContributionsCount
                             }
                         }
                     }
@@ -72,7 +74,6 @@ export const GET: PageServerLoad = async () => {
 
         users.push(
             ...search.search.nodes
-                .filter((u) => u.name)
                 .map((u) => {
                     const commits =
                         u.contributionsCollection?.totalCommitContributions ??
@@ -85,6 +86,12 @@ export const GET: PageServerLoad = async () => {
                     const reviews =
                         u.contributionsCollection
                             ?.totalPullRequestReviewContributions ?? 0;
+                    const contributions =
+                        commits + issues + pullRequests + reviews;
+                    const privateContributions =
+                        contributions +
+                        (u.contributionsCollection
+                            ?.restrictedContributionsCount ?? 0);
 
                     return new User({
                         name: u.name,
@@ -95,8 +102,8 @@ export const GET: PageServerLoad = async () => {
                         issues,
                         pullRequests,
                         reviews,
-                        contributions:
-                            commits + issues + pullRequests + reviews,
+                        contributions,
+                        privateContributions,
                     });
                 })
         );
@@ -104,7 +111,7 @@ export const GET: PageServerLoad = async () => {
 
     await connect();
     await User.deleteMany({});
-    await User.insertMany(users);
+    await User.insertMany(users, { lean: true, ordered: false });
 
     return new Response(JSON.stringify(users), {
         headers: { "content-type": "application/json" },

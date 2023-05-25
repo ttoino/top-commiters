@@ -1,6 +1,6 @@
 <script>
 	import "@primer/css/dist/primer.css";
-    import Header from "./Header.svelte";
+    import Header from "../lib/components/Header.svelte";
 </script>
 
 <Header/>
