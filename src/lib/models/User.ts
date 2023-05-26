@@ -1,4 +1,4 @@
-import { Schema, type InferSchemaType, model, Model } from "mongoose";
+import { Schema, type InferSchemaType, model } from "mongoose";
 import countries from "$lib/countries.json";
 
 const schema = new Schema({

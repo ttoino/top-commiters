@@ -1,4 +1,14 @@
 export const rankingTypes = {
+    contribs: {
+        prop: "contributions",
+        title: "Contributions",
+        icon: "graph",
+    },
+    private: {
+        prop: "privateContributions",
+        title: "Private Contributions",
+        icon: "lock",
+    },
     commits: {
         prop: "commits",
         title: "Commits",
@@ -18,16 +28,6 @@ export const rankingTypes = {
         prop: "reviews",
         title: "Reviews",
         icon: "code-review",
-    },
-    contribs: {
-        prop: "contributions",
-        title: "Contributions",
-        icon: "graph",
-    },
-    private: {
-        prop: "privateContributions",
-        title: "Private Contributions",
-        icon: "lock",
     },
 } as const;
 

@@ -1,5 +1,5 @@
 import { connect } from "$lib/db";
-import User, { countryModels } from "$lib/models/User";
+import { countryModels } from "$lib/models/User";
 import type { PageServerLoad } from "./$types";
 import countries from "$lib/countries.json";
 import { rankingTypes, type RankingType } from "$lib/rankingTypes";
@@ -7,16 +7,13 @@ import { rankingTypes, type RankingType } from "$lib/rankingTypes";
 export const load: PageServerLoad = async ({ params }) => {
     await connect();
 
-    const rankingType = (params.rankingType?.toLowerCase() ??
-        "contribs") as RankingType;
+    const rankingType = params.rankingType.toLowerCase() as RankingType;
     const prop = rankingTypes[rankingType].prop;
 
-    const param = params.country?.toUpperCase() as
-        | keyof typeof countries
-        | undefined;
-    const country = param ? countries[param] : null;
+    const param = params.country.toUpperCase() as keyof typeof countries;
+    const country = countries[param];
 
-    const model = param ? countryModels[param] : User;
+    const model = countryModels[param];
 
     const users = await model
         .find()
@@ -27,6 +24,5 @@ export const load: PageServerLoad = async ({ params }) => {
     return {
         country,
         users: JSON.parse(JSON.stringify(users)),
-        rankingType,
     };
 };

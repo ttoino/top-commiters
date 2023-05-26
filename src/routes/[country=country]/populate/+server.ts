@@ -34,13 +34,9 @@ interface Search {
 export const GET: PageServerLoad = async ({ params }) => {
     const octokit = await getOctokit();
 
-    const country = params.country?.toUpperCase() as
-        | keyof typeof countries
-        | undefined;
+    const country = params.country.toUpperCase() as keyof typeof countries;
 
-    const q = country
-        ? `location:${countries[country].name}`
-        : "";
+    const q = country !== "GLOBAL" ? `location:${countries[country].name}` : "";
 
     const users: mongoose.Document<unknown, unknown, IUser>[] = [];
     let after = undefined;
@@ -50,7 +46,7 @@ export const GET: PageServerLoad = async ({ params }) => {
         const search: Search = await octokit.graphql<Search>(
             `
             query($after: String, $q: String!) {
-                search(query: $q, type: USER, after: $after, first: 25) {
+                search(query: $q, type: USER, after: $after, first: 10) {
                     pageInfo {
                         hasNextPage
                         endCursor

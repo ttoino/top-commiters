@@ -4,5 +4,5 @@ import countries from "$lib/countries.json";
 export const match: ParamMatcher = (param) => {
     const country = param.toUpperCase();
 
-    return country in countries;
+    return country === "GLOBAL" || country in countries;
 };
