@@ -4,6 +4,8 @@ import User, { countryModels, type IUser } from "$lib/models/User";
 import type mongoose from "mongoose";
 import type { PageServerLoad } from "../$types";
 import countries from "$lib/countries.json";
+import { env } from "$env/dynamic/private";
+import { redirect } from "@sveltejs/kit";
 
 interface Search {
     search: {
@@ -31,7 +33,10 @@ interface Search {
     };
 }
 
-export const GET: PageServerLoad = async ({ params }) => {
+export const GET: PageServerLoad = async ({ params, url }) => {
+    if (url.searchParams.get("key") !== env.POPULATE_KEY)
+        throw redirect(308, url.pathname.replace("/populate", "/contribs"));
+
     const octokit = await getOctokit();
 
     const country = params.country.toUpperCase() as keyof typeof countries;
@@ -118,7 +123,5 @@ export const GET: PageServerLoad = async ({ params }) => {
     await model.deleteMany({});
     await model.insertMany(users, { lean: true, ordered: false });
 
-    return new Response(JSON.stringify(users), {
-        headers: { "content-type": "application/json" },
-    });
+    throw redirect(307, url.pathname.replace("/populate", "/contribs"));
 };

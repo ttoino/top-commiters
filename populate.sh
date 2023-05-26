@@ -1,12 +1,14 @@
 #!/bin/bash
 
+source ".env"
+
 read -ra countries < <(jq -r 'keys | @tsv' <src/lib/countries.json)
 
-# curl -s localhost:5173/populate > /dev/null
-# echo "Populated global"
+curl -s "localhost:5173/populate?key=$POPULATE_KEY" > /dev/null
+echo "Populated global"
 
 function populate() {
-    curl -s "localhost:5173/$1/populate" > /dev/null
+    curl -s "localhost:5173/$1/populate?key=$POPULATE_KEY" > /dev/null
     echo "Populated $1"
 }
 
