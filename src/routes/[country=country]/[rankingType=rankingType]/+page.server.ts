@@ -3,6 +3,7 @@ import { countryModels } from "$lib/models/User";
 import type { PageServerLoad } from "./$types";
 import countries from "$lib/countries.json";
 import { rankingTypes, type RankingType } from "$lib/rankingTypes";
+import { disconnect } from "mongoose";
 
 export const load: PageServerLoad = async ({ params }) => {
     await connect();
@@ -20,6 +21,8 @@ export const load: PageServerLoad = async ({ params }) => {
         .sort({ [prop]: "desc" })
         .limit(100)
         .lean();
+
+    await disconnect();
 
     return {
         country,

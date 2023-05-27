@@ -11,9 +11,8 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@fontsource/fira-mono": "^4.5.10",
 		"@neoconfetti/svelte": "^1.0.0",
-		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/adapter-node": "^1.2.4",
 		"@sveltejs/kit": "^1.5.0",
 		"@types/cookie": "^0.5.1",
 		"@types/primer__octicons": "^17.11.0",
@@ -34,7 +33,6 @@
 	"dependencies": {
 		"@primer/css": "^21.0.1",
 		"@primer/octicons": "^19.1.0",
-		"isomorphic-fetch": "^3.0.0",
 		"mongoose": "^7.2.0",
 		"octokit": "^2.0.18"
 	}

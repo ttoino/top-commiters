@@ -6,6 +6,7 @@ import type { PageServerLoad } from "../$types";
 import countries from "$lib/countries.json";
 import { env } from "$env/dynamic/private";
 import { redirect } from "@sveltejs/kit";
+import { disconnect } from "mongoose";
 
 interface Search {
     search: {
@@ -122,6 +123,7 @@ export const GET: PageServerLoad = async ({ params, url }) => {
     await connect();
     await model.deleteMany({});
     await model.insertMany(users, { lean: true, ordered: false });
+    await disconnect();
 
     throw redirect(307, url.pathname.replace("/populate", "/contribs"));
 };

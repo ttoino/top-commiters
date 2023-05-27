@@ -1,0 +1,20 @@
+version: '3'
+services:
+  committers:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    env_file:
+      - .env
+    ports:
+      - "4500:4000"
+    depends_on:
+      - mongodb
+    
+  mongodb:
+    image: mongo:latest
+    restart: always
+    expose:
+      - "27017:27017"
+    
