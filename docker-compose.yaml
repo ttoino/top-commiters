@@ -8,6 +8,8 @@ services:
       - .env
     ports:
       - "5173:5173"
+    volumes:
+      - .:/app
     depends_on:
       - mongodb
 

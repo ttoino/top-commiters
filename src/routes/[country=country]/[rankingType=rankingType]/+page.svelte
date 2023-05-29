@@ -10,7 +10,8 @@
     const country = data.country.name;
     const flag = data.country.flag;
     const urlPrefix =  `/${data.country.code}`;
-    const rankingType = $page.params.rankingType as RankingType;
+    let rankingType: RankingType;
+    $: rankingType = $page.params.rankingType as RankingType;
 </script>
 
 <svelte:head>

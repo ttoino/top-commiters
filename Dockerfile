@@ -5,7 +5,8 @@ WORKDIR /app
 COPY . .
 
 RUN yarn
-RUN yarn dev --host
+
+CMD ["yarn", "dev", "--host"]
 
 FROM node:current-alpine AS build
 
