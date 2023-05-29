@@ -127,6 +127,7 @@ export const GET: PageServerLoad = async ({ params, url }) => {
     await connect();
     await model.deleteMany({});
     try {
+        if (mongoose.connection.readyState === 0) await connect();
         await model.insertMany(users, { ordered: false });
     } catch {
         // Do nothing
@@ -145,6 +146,8 @@ export const GET: PageServerLoad = async ({ params, url }) => {
                 },
             ])
         )?.[0]?.minFollowers ?? 0;
+
+    if (mongoose.connection.readyState === 0) await connect();
 
     const numberOfUsers = await model.countDocuments();
 
