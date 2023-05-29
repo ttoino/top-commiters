@@ -12,6 +12,13 @@
     const urlPrefix =  `/${data.country.code}`;
     let rankingType: RankingType;
     $: rankingType = $page.params.rankingType as RankingType;
+
+    const {
+        numberOfUsers,
+        minFollowers,
+    } = data.metadata;
+
+    const updatedAt = new Date(data.metadata.updatedAt).toLocaleString();
 </script>
 
 <svelte:head>
@@ -23,6 +30,11 @@
 
     <RankingsSelect current={rankingType} {urlPrefix} />
 </div>
+
+<p>
+    Based on the top <strong>{numberOfUsers}</strong> users (with at least <strong>{minFollowers}</strong> followers).
+    Updated on <strong>{updatedAt}</strong>.
+</p>
 
 <div class="Box">
     {#if data.users.length === 0}

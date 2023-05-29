@@ -1,9 +1,10 @@
 import { connect } from "$lib/db";
-import { countryModels } from "$lib/models/User";
+import { countryModels, type IUser } from "$lib/models/User";
 import type { PageServerLoad } from "./$types";
 import countries from "$lib/countries.json";
 import { rankingTypes, type RankingType } from "$lib/rankingTypes";
 import { disconnect } from "mongoose";
+import Metadata, { type IMetadata } from "$lib/models/Metadata";
 
 export const load: PageServerLoad = async ({ params, cookies }) => {
     await connect();
@@ -22,6 +23,8 @@ export const load: PageServerLoad = async ({ params, cookies }) => {
         .limit(100)
         .lean();
 
+    const metadata = await Metadata.findOne({ code: param }).lean();
+
     await disconnect();
 
     const theme = cookies.get("theme") ?? "light";
@@ -29,6 +32,7 @@ export const load: PageServerLoad = async ({ params, cookies }) => {
     return await {
         theme,
         country,
-        users: JSON.parse(JSON.stringify(users)),
+        users: JSON.parse(JSON.stringify(users)) as IUser[],
+        metadata: JSON.parse(JSON.stringify(metadata)) as IMetadata,
     };
 };

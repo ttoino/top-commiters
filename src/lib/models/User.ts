@@ -42,6 +42,10 @@ const schema = new Schema({
         type: Number,
         required: true,
     },
+    followers: {
+        type: Number,
+        required: true,
+    },
 });
 
 export type IUser = InferSchemaType<typeof schema>;

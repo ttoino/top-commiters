@@ -7,6 +7,7 @@ import countries from "$lib/countries.json";
 import { env } from "$env/dynamic/private";
 import { redirect } from "@sveltejs/kit";
 import { disconnect } from "mongoose";
+import Metadata from "$lib/models/Metadata";
 
 interface Search {
     search: {
@@ -70,6 +71,9 @@ export const GET: PageServerLoad = async ({ params, url }) => {
                                 totalPullRequestReviewContributions
                                 restrictedContributionsCount
                             }
+                            followers {
+                                totalCount
+                            }
                         }
                     }
                 }
@@ -113,6 +117,7 @@ export const GET: PageServerLoad = async ({ params, url }) => {
                     reviews,
                     contributions,
                     privateContributions,
+                    followers: u.followers?.totalCount ?? 0,
                 });
             })
         );
@@ -124,9 +129,30 @@ export const GET: PageServerLoad = async ({ params, url }) => {
     await model.deleteMany({});
     try {
         await model.insertMany(users, { ordered: false });
-    } finally {
-        await disconnect();
+    } catch {
+        // Do nothing
     }
-    
+
+    const minFollowers =
+        (
+            await model.aggregate([
+                {
+                    $group: {
+                        _id: null,
+                        minFollowers: { $min: "$followers" },
+                    },
+                },
+            ])
+        )?.[0]?.minFollowers ?? 0;
+
+    const numberOfUsers = await model.countDocuments();
+
+    await Metadata.updateOne(
+        { code: country },
+        { code: country, numberOfUsers, minFollowers },
+        { upsert: true }
+    );
+    await disconnect();
+
     throw redirect(307, url.pathname.replace("/populate", "/contribs"));
 };
