@@ -8,8 +8,8 @@
 
     let data = {};
     $: data = {
-        "data-color-mode": $theme ?? t,
-        [`data-${$theme}-theme`]: $theme ?? t
+        "data-color-mode": $theme,
+        [`data-${$theme}-theme`]: $theme,
     }
 </script>
 
