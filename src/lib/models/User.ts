@@ -8,6 +8,7 @@ const schema = new Schema({
     login: {
         type: String,
         required: true,
+        unique: true,
     },
     url: {
         type: String,

@@ -122,8 +122,11 @@ export const GET: PageServerLoad = async ({ params, url }) => {
 
     await connect();
     await model.deleteMany({});
-    await model.insertMany(users, { lean: true, ordered: false });
-    await disconnect();
-
+    try {
+        await model.insertMany(users, { ordered: false });
+    } finally {
+        await disconnect();
+    }
+    
     throw redirect(307, url.pathname.replace("/populate", "/contribs"));
 };
