@@ -33,7 +33,7 @@ RUN rm -rf ./*
 RUN apk add bash jq curl
 RUN echo "0 0 * * 0 /app/populate.sh" | crontab -
 
-COPY --from=build /app/package.json .
+COPY package.json .
 
 RUN yarn --prod
 
