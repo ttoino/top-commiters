@@ -5,7 +5,7 @@ import countries from "$lib/countries.json";
 import { rankingTypes, type RankingType } from "$lib/rankingTypes";
 import { disconnect } from "mongoose";
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, cookies }) => {
     await connect();
 
     const rankingType = params.rankingType.toLowerCase() as RankingType;
@@ -24,7 +24,10 @@ export const load: PageServerLoad = async ({ params }) => {
 
     await disconnect();
 
-    return {
+    const theme = cookies.get("theme") ?? "light";
+
+    return await {
+        theme,
         country,
         users: JSON.parse(JSON.stringify(users)),
     };
