@@ -1,14 +1,24 @@
 version: '3'
 services:
-  committers:
+  dev:
     build:
       context: .
-      dockerfile: Dockerfile
-      target: production
+      target: dev
     env_file:
       - .env
     ports:
-      - "4500:4000"
+      - "5173:5173"
+    depends_on:
+      - mongodb
+
+  prod:
+    build:
+      context: .
+      target: prod
+    env_file:
+      - .env
+    ports:
+      - "$PORT:$PORT"
     depends_on:
       - mongodb
     

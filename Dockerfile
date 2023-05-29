@@ -1,3 +1,12 @@
+FROM node:current-alpine AS dev
+
+WORKDIR /app
+
+COPY . .
+
+RUN yarn
+RUN yarn dev --host
+
 FROM node:current-alpine AS build
 
 WORKDIR /app
@@ -7,7 +16,7 @@ COPY . .
 RUN yarn
 RUN yarn build
 
-FROM node:current-alpine AS production
+FROM node:current-alpine AS prod
 
 WORKDIR /app
 
