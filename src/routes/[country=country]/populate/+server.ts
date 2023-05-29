@@ -1,4 +1,4 @@
-import { connect } from "$lib/db";
+import { connect, disconnect } from "$lib/db";
 import { getOctokit } from "$lib/gh";
 import User, { countryModels, type IUser } from "$lib/models/User";
 import type mongoose from "mongoose";
@@ -6,7 +6,7 @@ import type { PageServerLoad } from "../$types";
 import countries from "$lib/countries.json";
 import { env } from "$env/dynamic/private";
 import { redirect } from "@sveltejs/kit";
-import { disconnect } from "mongoose";
+import { connection } from "mongoose";
 import Metadata from "$lib/models/Metadata";
 
 interface Search {
@@ -133,6 +133,8 @@ export const GET: PageServerLoad = async ({ params, url }) => {
         // Do nothing
     }
 
+    if (connection.readyState === 0) await connect();
+
     const minFollowers =
         (
             await model.aggregate([
@@ -146,6 +148,8 @@ export const GET: PageServerLoad = async ({ params, url }) => {
         )?.[0]?.minFollowers ?? 0;
 
     const numberOfUsers = await model.countDocuments();
+
+    if (connection.readyState === 0) await connect();
 
     await Metadata.updateOne(
         { code: country },
