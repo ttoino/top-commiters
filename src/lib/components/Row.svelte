@@ -9,7 +9,7 @@
     export let rankingType: RankingType;
 </script>
 
-<li class="Box-row d-flex flex-row flex-items-center">
+<li class="Box-row d-flex flex-row flex-items-center position-relative">
     <span class="Label Label--large mr-3">{rank}</span>
     <img
         src={user.avatar}
@@ -35,3 +35,12 @@
         {user[rankingTypes[rankingType].prop]}
     </span>
 </li>
+
+<style>
+    a::before {
+        content: "";
+        display: block;
+        position: absolute;
+        inset: 0;
+    }
+</style>

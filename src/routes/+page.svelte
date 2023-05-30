@@ -9,7 +9,7 @@
 <div class="Box">
     <ul>
         {#each Object.values(countries) as country}
-            <li class="Box-row d-flex flex-row flex-items-center">
+            <li class="Box-row d-flex flex-row flex-items-center position-relative">
                 <a href={`/${country.code}/contribs`} class="Box-row-link mr-auto">
                     {country.flag} {country.name}
                 </a>
@@ -17,3 +17,12 @@
         {/each}
     </ul>
 </div>
+
+<style>
+    a::before {
+        content: "";
+        display: block;
+        position: absolute;
+        inset: 0;
+    }
+</style>
