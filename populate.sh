@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -ra countries < <(jq -r 'keys | @tsv' </app/countries.json)
+read -ra countries < <(jq -r 'keys_unsorted | @tsv' </app/countries.json)
 
 function populate() {
     curl -s "$HOST:$PORT/$1/populate?key=$POPULATE_KEY" >/dev/null
@@ -8,4 +8,4 @@ function populate() {
 }
 
 export -f populate
-xargs -I {} -P 16 -n 1 bash -c "populate {}" < <(printf "%s\n" "${countries[@]}")
+xargs -I {} -n 1 bash -c "populate {}" < <(printf "%s\n" "${countries[@]}")

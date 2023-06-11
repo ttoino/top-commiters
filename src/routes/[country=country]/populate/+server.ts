@@ -41,8 +41,14 @@ export const GET: PageServerLoad = async ({ params, url }) => {
     const octokit = await getOctokit();
 
     const country = params.country.toUpperCase() as keyof typeof countries;
+    const countryInfo = countries[country];
 
-    const q = country !== "GLOBAL" ? `location:${countries[country].name}` : "";
+    const q =
+        country !== "GLOBAL"
+            ? [countryInfo.name, ...countryInfo.alias]
+                  .map((c) => `location:"${c}"`)
+                  .join(" ")
+            : "";
 
     const users: mongoose.Document<unknown, unknown, IUser>[] = [];
     let after = undefined;

@@ -3,7 +3,9 @@ FROM node:current-alpine AS dev
 WORKDIR /app
 
 COPY . .
+COPY src/lib/countries.json .
 
+RUN apk add bash jq curl
 RUN yarn
 
 CMD ["yarn", "dev", "--host"]
@@ -17,6 +19,7 @@ COPY yarn.lock .
 
 RUN yarn
 
+COPY static static
 COPY src src
 COPY svelte.config.js .
 COPY tsconfig.json .
