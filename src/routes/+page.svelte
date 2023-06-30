@@ -1,7 +1,9 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
+    import { page } from "$app/stores";
     import countries from "$lib/countries.json";
 
-    let value = "";
+    let value = $page.url.searchParams.get("q") ?? "";
 
     let filteredCountries: typeof countries[keyof typeof countries][] = [];
 
@@ -15,7 +17,16 @@
     <title>Top commiters</title>
 </svelte:head>
 
-<input type="search" placeholder="Search countries..." name="filter-country" id="filter-country" class="form-control input-block mb-4 p-3" bind:value>
+<input
+    type="search" 
+    placeholder="Search countries..." 
+    name="filter-country" 
+    id="filter-country" 
+    class="form-control input-block mb-4 p-3" 
+    bind:value 
+    on:input={function() {
+        goto(this.value ? `/?q=${this.value}` : "/", { replaceState: true, keepFocus: true });
+    }}>
 
 <div class="Box">
     {#if filteredCountries.length === 0}
