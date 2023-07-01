@@ -19,7 +19,7 @@
 
 <input
     type="search" 
-    placeholder="Search countries..." 
+    placeholder="🔍 Search countries..." 
     name="filter-country" 
     id="filter-country" 
     class="form-control input-block mb-4 p-3" 
