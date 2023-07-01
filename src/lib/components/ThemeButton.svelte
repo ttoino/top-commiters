@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { theme } from "$lib/stores";
     import octicons from "@primer/octicons";
 
     const icons = {
@@ -7,17 +6,14 @@
         dark: octicons["moon"].toSVG({height: 24, width: 24}),
     };
 
-    const themes = ["light", "dark"] as const;
+    const themes = ["light", "dark"];
 </script>
 
-<a class="Header-link" href="#" on:click|preventDefault={
-    () => {
-        const index = themes.indexOf($theme ?? "light");
-        $theme = themes[(index + 1) % themes.length];
-
-        console.log($theme);
-    }
-}>
+<a class="Header-link" href="#" on:click|preventDefault={() => {
+    const theme = localStorage.getItem("theme");
+    const index = themes.indexOf(theme ?? "");
+    localStorage.setItem("theme", themes[(index + 1) % themes.length]);
+}}>
     <span class="light">
         {@html icons.light}
     </span>

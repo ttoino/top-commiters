@@ -1,25 +1,13 @@
-<script>
+<script lang="ts">
 	import "@primer/css/dist/primer.css";
     import Header from "../lib/components/Header.svelte";
-    import { page } from "$app/stores";
-    import { theme } from "$lib/stores";
-
-    $theme = $page.data.theme ?? "light";
-
-    let data = {};
-    $: data = {
-        "data-color-mode": $theme,
-        [`data-${$theme}-theme`]: $theme,
-    }
 </script>
 
-<div {...data}>
-    <Header/>
-    
-    <main class="container-lg p-4">
-        <slot />
-    </main>
-</div>
+<Header/>
+
+<main class="container-lg p-4">
+    <slot />
+</main>
 
 <style>
     :global(*) {
