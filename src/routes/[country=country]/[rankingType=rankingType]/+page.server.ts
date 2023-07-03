@@ -6,7 +6,7 @@ import { rankingTypes, type RankingType } from "$lib/rankingTypes";
 import { disconnect } from "mongoose";
 import Metadata, { type IMetadata } from "$lib/models/Metadata";
 
-export const load: PageServerLoad = async ({ params, cookies }) => {
+export const load: PageServerLoad = async ({ params }) => {
     await connect();
 
     const rankingType = params.rankingType.toLowerCase() as RankingType;
@@ -27,10 +27,7 @@ export const load: PageServerLoad = async ({ params, cookies }) => {
 
     await disconnect();
 
-    const theme = cookies.get("theme") ?? "light";
-
     return await {
-        theme,
         country,
         users: JSON.parse(JSON.stringify(users)) as IUser[],
         metadata: JSON.parse(JSON.stringify(metadata)) as IMetadata,

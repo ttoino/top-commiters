@@ -166,5 +166,5 @@ export const GET: PageServerLoad = async ({ params, url }) => {
     );
     await disconnect();
 
-    throw redirect(307, url.pathname.replace("/populate", "/contribs"));
+    throw redirect(308, url.pathname.replace("/populate", "/contribs"));
 };
