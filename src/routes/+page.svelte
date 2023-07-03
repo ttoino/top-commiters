@@ -26,7 +26,8 @@
     class="form-control input-block mb-4 p-3" 
     bind:value 
     on:input={function() {
-        goto(this.value ? `/?q=${this.value}` : "/", { replaceState: true, keepFocus: true });
+        $page.url.searchParams.set("q", this.value);
+        goto(this.value ? $page.url : "/", { replaceState: true, keepFocus: true });
     }}>
 
 <div class="Box">
