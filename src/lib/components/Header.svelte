@@ -17,6 +17,6 @@
     </div>
 
     <div class="Header-item">
-        <a href="https://github.com/ttoino/top-commiters" class="Header-link">{@html githubIcon}</a>
+        <a href="https://github.com/ttoino/top-commiters" class="Header-link" title="Github" aria-label="Top committers Github repository">{@html githubIcon}</a>
     </div>
 </header>

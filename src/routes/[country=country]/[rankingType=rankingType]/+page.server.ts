@@ -27,7 +27,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
     await disconnect();
 
-    return await {
+    return {
         country,
         users: JSON.parse(JSON.stringify(users)) as IUser[],
         metadata: JSON.parse(JSON.stringify(metadata)) as IMetadata,

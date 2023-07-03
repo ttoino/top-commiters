@@ -12,7 +12,7 @@
 <li class="Box-row d-flex flex-row flex-items-center position-relative">
     <span class="Label Label--large mr-3">{rank}</span>
     <img
-        src={user.avatar}
+        src="{user.avatar}&s=96"
         alt=""
         class="avatar mr-3"
         width="32"
