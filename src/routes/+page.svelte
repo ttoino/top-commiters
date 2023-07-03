@@ -15,6 +15,7 @@
 
 <svelte:head>
     <title>Top commiters</title>
+    <meta name="description" content="Top commiters lists the top users on github, by country" />
 </svelte:head>
 
 <input

@@ -2,7 +2,7 @@
     import { page } from "$app/stores";
     import RankingsSelect from "$lib/components/RankingsSelect.svelte";
     import Row from "$lib/components/Row.svelte";
-    import type { RankingType } from "$lib/rankingTypes";
+    import { rankingTypes, type RankingType } from "$lib/rankingTypes";
     import type { PageData } from "./$types";
 
     export let data: PageData;
@@ -23,6 +23,7 @@
 
 <svelte:head>
     <title>Top commiters {flag}</title>
+    <meta name="description" content="Top 100 Github users from {country} sorted by {rankingTypes[rankingType].title}" />
 </svelte:head>
 
 <div class="d-flex flex-row flex-items-center flex-justify-between mb-4">
