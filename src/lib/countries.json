@@ -45,11 +45,7 @@
         "code": "AG",
         "name": "Antigua and Barbuda",
         "flag": "🇦🇬",
-        "alias": [
-            "Antigua",
-            "Barbuda",
-            "Wadadli"
-        ]
+        "alias": ["Antigua", "Barbuda", "Wadadli"]
     },
     "AR": {
         "code": "AR",
@@ -61,9 +57,7 @@
         "code": "AM",
         "name": "Armenia",
         "flag": "🇦🇲",
-        "alias": [
-            "Hayastan"
-        ]
+        "alias": ["Hayastan"]
     },
     "AU": {
         "code": "AU",
@@ -80,9 +74,7 @@
         "code": "AT",
         "name": "Austria",
         "flag": "🇦🇹",
-        "alias": [
-            "Österreich"
-        ]
+        "alias": ["Österreich"]
     },
     "AZ": {
         "code": "AZ",
@@ -100,9 +92,7 @@
         "code": "BH",
         "name": "Bahrain",
         "flag": "🇧🇭",
-        "alias": [
-            "Bahrayn"
-        ]
+        "alias": ["Bahrayn"]
     },
     "BD": {
         "code": "BD",
@@ -120,19 +110,13 @@
         "code": "BY",
         "name": "Belarus",
         "flag": "🇧🇾",
-        "alias": [
-            "Byelorussia"
-        ]
+        "alias": ["Byelorussia"]
     },
     "BE": {
         "code": "BE",
         "name": "Belgium",
         "flag": "🇧🇪",
-        "alias": [
-            "Belgique",
-            "België",
-            "Belgien"
-        ]
+        "alias": ["Belgique", "België", "Belgien"]
     },
     "BZ": {
         "code": "BZ",
@@ -144,9 +128,7 @@
         "code": "BJ",
         "name": "Benin",
         "flag": "🇧🇯",
-        "alias": [
-            "Dahomey"
-        ]
+        "alias": ["Dahomey"]
     },
     "BT": {
         "code": "BT",
@@ -164,10 +146,7 @@
         "code": "BA",
         "name": "Bosnia and Herzegovina",
         "flag": "🇧🇦",
-        "alias": [
-            "Bosnia",
-            "Herzegovina"
-        ]
+        "alias": ["Bosnia", "Herzegovina"]
     },
     "BW": {
         "code": "BW",
@@ -179,10 +158,7 @@
         "code": "BR",
         "name": "Brazil",
         "flag": "🇧🇷",
-        "alias": [
-            "Brasil",
-            "Pindorama"
-        ]
+        "alias": ["Brasil", "Pindorama"]
     },
     "BN": {
         "code": "BN",
@@ -236,36 +212,25 @@
         "code": "CF",
         "name": "Central African Republic",
         "flag": "🇨🇫",
-        "alias": [
-            "CAR",
-            "Ubangi-Shari"
-        ]
+        "alias": ["CAR", "Ubangi-Shari"]
     },
     "TD": {
         "code": "TD",
         "name": "Chad",
         "flag": "🇹🇩",
-        "alias": [
-            "Tchad"
-        ]
+        "alias": ["Tchad"]
     },
     "CL": {
         "code": "CL",
         "name": "Chile",
         "flag": "🇨🇱",
-        "alias": [
-            "Chili",
-            "Chilli"
-        ]
+        "alias": ["Chili", "Chilli"]
     },
     "CN": {
         "code": "CN",
         "name": "China",
         "flag": "🇨🇳",
-        "alias": [
-            "Hong Kong",
-            "Macau"
-        ]
+        "alias": ["Hong Kong", "Macau"]
     },
     "CO": {
         "code": "CO",
@@ -277,18 +242,13 @@
         "code": "KM",
         "name": "Comoros",
         "flag": "🇰🇲",
-        "alias": [
-            "Komori",
-            "Qumurī"
-        ]
+        "alias": ["Komori", "Qumurī"]
     },
     "CG": {
         "code": "CG",
         "name": "Congo",
         "flag": "🇨🇬",
-        "except": [
-            "CD"
-        ],
+        "except": ["CD"],
         "alias": []
     },
     "CR": {
@@ -301,10 +261,7 @@
         "code": "HR",
         "name": "Croatia",
         "flag": "🇭🇷",
-        "alias": [
-            "Hrvatska",
-            "Hrvaška"
-        ]
+        "alias": ["Hrvatska", "Hrvaška"]
     },
     "CU": {
         "code": "CU",
@@ -316,27 +273,19 @@
         "code": "CY",
         "name": "Cyprus",
         "flag": "🇨🇾",
-        "alias": [
-            "Κύπρος",
-            "Kypros",
-            "Kıbrıs"
-        ]
+        "alias": ["Κύπρος", "Kypros", "Kıbrıs"]
     },
     "CZ": {
         "code": "CZ",
         "name": "Czech Republic",
         "flag": "🇨🇿",
-        "alias": [
-            "Czechia"
-        ]
+        "alias": ["Czechia"]
     },
     "CD": {
         "code": "CD",
         "name": "Democratic Republic of the Congo",
         "flag": "🇨🇩",
-        "alias": [
-            "DRC"
-        ]
+        "alias": ["DRC"]
     },
     "DK": {
         "code": "DK",
@@ -361,27 +310,19 @@
         "code": "DM",
         "name": "Dominica",
         "flag": "🇩🇲",
-        "alias": [
-            "Dominique",
-            "Dominik",
-            "Wai‘tu kubuli"
-        ]
+        "alias": ["Dominique", "Dominik", "Wai‘tu kubuli"]
     },
     "DO": {
         "code": "DO",
         "name": "Dominican Republic",
         "flag": "🇩🇴",
-        "alias": [
-            "República Dominicana"
-        ]
+        "alias": ["República Dominicana"]
     },
     "TL": {
         "code": "TL",
         "name": "East Timor",
         "flag": "🇹🇱",
-        "alias": [
-            "Timor-Leste"
-        ]
+        "alias": ["Timor-Leste"]
     },
     "EC": {
         "code": "EC",
@@ -393,11 +334,7 @@
         "code": "EG",
         "name": "Egypt",
         "flag": "🇪🇬",
-        "alias": [
-            "Miṣr",
-            "Meṣr",
-            "Kīmi"
-        ]
+        "alias": ["Miṣr", "Meṣr", "Kīmi"]
     },
     "SV": {
         "code": "SV",
@@ -409,11 +346,7 @@
         "code": "GQ",
         "name": "Equatorial Guinea",
         "flag": "🇬🇶",
-        "alias": [
-            "Guinea Ecuatorial",
-            "Guinée équatoriale",
-            "Guiné Equatorial"
-        ]
+        "alias": ["Guinea Ecuatorial", "Guinée équatoriale", "Guiné Equatorial"]
     },
     "ER": {
         "code": "ER",
@@ -425,28 +358,19 @@
         "code": "EE",
         "name": "Estonia",
         "flag": "🇪🇪",
-        "alias": [
-            "Eesti"
-        ]
+        "alias": ["Eesti"]
     },
     "SZ": {
         "code": "SZ",
         "name": "Eswatini",
         "flag": "🇸🇿",
-        "alias": [
-            "Swaziland"
-        ]
+        "alias": ["Swaziland"]
     },
     "ET": {
         "code": "ET",
         "name": "Ethiopia",
         "flag": "🇪🇹",
-        "alias": [
-            "Etiopia",
-            "Habeshastan",
-            "Ethiopië",
-            "Al-Habasha"
-        ]
+        "alias": ["Etiopia", "Habeshastan", "Ethiopië", "Al-Habasha"]
     },
     "FJ": {
         "code": "FJ",
@@ -458,11 +382,7 @@
         "code": "FI",
         "name": "Finland",
         "flag": "🇫🇮",
-        "alias": [
-            "Suomi",
-            "Aland Islands",
-            "Åland"
-        ]
+        "alias": ["Suomi", "Aland Islands", "Åland"]
     },
     "FR": {
         "code": "FR",
@@ -501,46 +421,32 @@
         "code": "GE",
         "name": "Georgia",
         "flag": "🇬🇪",
-        "except": [
-            "US"
-        ],
-        "alias": [
-            "Sakartvelo"
-        ]
+        "except": ["US"],
+        "alias": ["Sakartvelo"]
     },
     "DE": {
         "code": "DE",
         "name": "Germany",
         "flag": "🇩🇪",
-        "alias": [
-            "Deutschland"
-        ]
+        "alias": ["Deutschland"]
     },
     "GH": {
         "code": "GH",
         "name": "Ghana",
         "flag": "🇬🇭",
-        "alias": [
-            "Gaana"
-        ]
+        "alias": ["Gaana"]
     },
     "GR": {
         "code": "GR",
         "name": "Greece",
         "flag": "🇬🇷",
-        "alias": [
-            "Hellas",
-            "Ελλάδα",
-            "Ελλάς"
-        ]
+        "alias": ["Hellas", "Ελλάδα", "Ελλάς"]
     },
     "GD": {
         "code": "GD",
         "name": "Grenada",
         "flag": "🇬🇩",
-        "alias": [
-            "Gwenad"
-        ]
+        "alias": ["Gwenad"]
     },
     "GT": {
         "code": "GT",
@@ -552,17 +458,13 @@
         "code": "GN",
         "name": "Guinea",
         "flag": "🇬🇳",
-        "alias": [
-            "Gine"
-        ]
+        "alias": ["Gine"]
     },
     "GW": {
         "code": "GW",
         "name": "Guinea-Bissau",
         "flag": "🇬🇼",
-        "alias": [
-            "Guiné-Bissau"
-        ]
+        "alias": ["Guiné-Bissau"]
     },
     "GY": {
         "code": "GY",
@@ -574,11 +476,7 @@
         "code": "HT",
         "name": "Haiti",
         "flag": "🇭🇹",
-        "alias": [
-            "Haïti",
-            "Ayiti",
-            "Hayti"
-        ]
+        "alias": ["Haïti", "Ayiti", "Hayti"]
     },
     "HN": {
         "code": "HN",
@@ -590,29 +488,19 @@
         "code": "HU",
         "name": "Hungary",
         "flag": "🇭🇺",
-        "alias": [
-            "Hungaria",
-            "Magyarország"
-        ]
+        "alias": ["Hungaria", "Magyarország"]
     },
     "IS": {
         "code": "IS",
         "name": "Iceland",
         "flag": "🇮🇸",
-        "alias": [
-            "Ísland"
-        ]
+        "alias": ["Ísland"]
     },
     "IN": {
         "code": "IN",
         "name": "India",
         "flag": "🇮🇳",
-        "alias": [
-            "Bhārat",
-            "Bhārata",
-            "Bhāratam",
-            "Bhāratavarṣa"
-        ]
+        "alias": ["Bhārat", "Bhārata", "Bhāratam", "Bhāratavarṣa"]
     },
     "ID": {
         "code": "ID",
@@ -636,9 +524,7 @@
         "code": "IE",
         "name": "Ireland",
         "flag": "🇮🇪",
-        "alias": [
-            "Éire"
-        ]
+        "alias": ["Éire"]
     },
     "IL": {
         "code": "IL",
@@ -650,17 +536,13 @@
         "code": "IT",
         "name": "Italy",
         "flag": "🇮🇹",
-        "alias": [
-            "Italia"
-        ]
+        "alias": ["Italia"]
     },
     "CI": {
         "code": "CI",
         "name": "Ivory Coast",
         "flag": "🇨🇮",
-        "alias": [
-            "Côte d'Ivoire"
-        ]
+        "alias": ["Côte d'Ivoire"]
     },
     "JM": {
         "code": "JM",
@@ -672,9 +554,7 @@
         "code": "JP",
         "name": "Japan",
         "flag": "🇯🇵",
-        "alias": [
-            "Nippon"
-        ]
+        "alias": ["Nippon"]
     },
     "JO": {
         "code": "JO",
@@ -686,10 +566,7 @@
         "code": "KZ",
         "name": "Kazakhstan",
         "flag": "🇰🇿",
-        "alias": [
-            "Қазақстан",
-            "Qazaqstan"
-        ]
+        "alias": ["Қазақстан", "Qazaqstan"]
     },
     "KE": {
         "code": "KE",
@@ -707,9 +584,7 @@
         "code": "XK",
         "name": "Kosovo",
         "flag": "🇽🇰",
-        "alias": [
-            "Косово"
-        ]
+        "alias": ["Косово"]
     },
     "KW": {
         "code": "KW",
@@ -721,9 +596,7 @@
         "code": "KG",
         "name": "Kyrgyzstan",
         "flag": "🇰🇬",
-        "alias": [
-            "Кыргызстан"
-        ]
+        "alias": ["Кыргызстан"]
     },
     "LA": {
         "code": "LA",
@@ -735,20 +608,13 @@
         "code": "LV",
         "name": "Latvia",
         "flag": "🇱🇻",
-        "alias": [
-            "Latvija"
-        ]
+        "alias": ["Latvija"]
     },
     "LB": {
         "code": "LB",
         "name": "Lebanon",
         "flag": "🇱🇧",
-        "alias": [
-            "Lebnan",
-            "Lubnan",
-            "Liban",
-            "Levanon"
-        ]
+        "alias": ["Lebnan", "Lubnan", "Liban", "Levanon"]
     },
     "LS": {
         "code": "LS",
@@ -778,28 +644,19 @@
         "code": "LT",
         "name": "Lithuania",
         "flag": "🇱🇹",
-        "alias": [
-            "Lietuva"
-        ]
+        "alias": ["Lietuva"]
     },
     "LU": {
         "code": "LU",
         "name": "Luxembourg",
         "flag": "🇱🇺",
-        "alias": [
-            "Lëtzebuerg",
-            "Luxemburg",
-            "Luxemburgo",
-            "Lussemburgo"
-        ]
+        "alias": ["Lëtzebuerg", "Luxemburg", "Luxemburgo", "Lussemburgo"]
     },
     "MG": {
         "code": "MG",
         "name": "Madagascar",
         "flag": "🇲🇬",
-        "alias": [
-            "Madagasikara"
-        ]
+        "alias": ["Madagasikara"]
     },
     "MW": {
         "code": "MW",
@@ -841,27 +698,19 @@
         "code": "MR",
         "name": "Mauritania",
         "flag": "🇲🇷",
-        "alias": [
-            "Mauritanie"
-        ]
+        "alias": ["Mauritanie"]
     },
     "MU": {
         "code": "MU",
         "name": "Mauritius",
         "flag": "🇲🇺",
-        "alias": [
-            "Maurice",
-            "Moris"
-        ]
+        "alias": ["Maurice", "Moris"]
     },
     "MX": {
         "code": "MX",
         "name": "Mexico",
         "flag": "🇲🇽",
-        "alias": [
-            "México",
-            "Méjico"
-        ]
+        "alias": ["México", "Méjico"]
     },
     "FM": {
         "code": "FM",
@@ -873,9 +722,7 @@
         "code": "MD",
         "name": "Moldova",
         "flag": "🇲🇩",
-        "alias": [
-            "Moldavia"
-        ]
+        "alias": ["Moldavia"]
     },
     "MC": {
         "code": "MC",
@@ -893,38 +740,25 @@
         "code": "ME",
         "name": "Montenegro",
         "flag": "🇲🇪",
-        "alias": [
-            "Crna Gora"
-        ]
+        "alias": ["Crna Gora"]
     },
     "MA": {
         "code": "MA",
         "name": "Morocco",
         "flag": "🇲🇦",
-        "alias": [
-            "Maghreb",
-            "Western Sahara",
-            "المغرب"
-        ]
+        "alias": ["Maghreb", "Western Sahara", "المغرب"]
     },
     "MZ": {
         "code": "MZ",
         "name": "Mozambique",
         "flag": "🇲🇿",
-        "alias": [
-            "Moçambique",
-            "Mozambiki",
-            "Msumbiji",
-            "Muzambhiki"
-        ]
+        "alias": ["Moçambique", "Mozambiki", "Msumbiji", "Muzambhiki"]
     },
     "MM": {
         "code": "MM",
         "name": "Myanmar",
         "flag": "🇲🇲",
-        "alias": [
-            "Burma"
-        ]
+        "alias": ["Burma"]
     },
     "NA": {
         "code": "NA",
@@ -963,12 +797,7 @@
         "code": "NZ",
         "name": "New Zealand",
         "flag": "🇳🇿",
-        "alias": [
-            "Aotearoa",
-            "Cook Islands",
-            "Niue",
-            "Tokelau"
-        ]
+        "alias": ["Aotearoa", "Cook Islands", "Niue", "Tokelau"]
     },
     "NI": {
         "code": "NI",
@@ -992,11 +821,7 @@
         "code": "KP",
         "name": "North Korea",
         "flag": "🇰🇵",
-        "alias": [
-            "DPRK",
-            "조선",
-            "Choson"
-        ]
+        "alias": ["DPRK", "조선", "Choson"]
     },
     "MK": {
         "code": "MK",
@@ -1008,12 +833,7 @@
         "code": "NO",
         "name": "Norway",
         "flag": "🇳🇴",
-        "alias": [
-            "Norge",
-            "Bouvet",
-            "Svalbard",
-            "Jan Mayen"
-        ]
+        "alias": ["Norge", "Bouvet", "Svalbard", "Jan Mayen"]
     },
     "OM": {
         "code": "OM",
@@ -1031,9 +851,7 @@
         "code": "PW",
         "name": "Palau",
         "flag": "🇵🇼",
-        "alias": [
-            "Belau"
-        ]
+        "alias": ["Belau"]
     },
     "PS": {
         "code": "PS",
@@ -1051,10 +869,7 @@
         "code": "PG",
         "name": "Papua New Guinea",
         "flag": "🇵🇬",
-        "alias": [
-            "Papua Niugini",
-            "Papua Niu Gini"
-        ]
+        "alias": ["Papua Niugini", "Papua Niu Gini"]
     },
     "PY": {
         "code": "PY",
@@ -1066,26 +881,19 @@
         "code": "PE",
         "name": "Peru",
         "flag": "🇵🇪",
-        "alias": [
-            "Perú"
-        ]
+        "alias": ["Perú"]
     },
     "PH": {
         "code": "PH",
         "name": "Philippines",
         "flag": "🇵🇭",
-        "alias": [
-            "Pilipinas",
-            "Filipinas"
-        ]
+        "alias": ["Pilipinas", "Filipinas"]
     },
     "PL": {
         "code": "PL",
         "name": "Poland",
         "flag": "🇵🇱",
-        "alias": [
-            "Polska"
-        ]
+        "alias": ["Polska"]
     },
     "PT": {
         "code": "PT",
@@ -1103,17 +911,13 @@
         "code": "RO",
         "name": "Romania",
         "flag": "🇷🇴",
-        "alias": [
-            "România"
-        ]
+        "alias": ["România"]
     },
     "RU": {
         "code": "RU",
         "name": "Russia",
         "flag": "🇷🇺",
-        "alias": [
-            "Россия"
-        ]
+        "alias": ["Россия"]
     },
     "RW": {
         "code": "RW",
@@ -1125,27 +929,19 @@
         "code": "KN",
         "name": "Saint Kitts and Nevis",
         "flag": "🇰🇳",
-        "alias": [
-            "Saint Kitts",
-            "Nevis"
-        ]
+        "alias": ["Saint Kitts", "Nevis"]
     },
     "LC": {
         "code": "LC",
         "name": "Saint Lucia",
         "flag": "🇱🇨",
-        "alias": [
-            "Sainte-Lucie"
-        ]
+        "alias": ["Sainte-Lucie"]
     },
     "VC": {
         "code": "VC",
         "name": "Saint Vincent and the Grenadines",
         "flag": "🇻🇨",
-        "alias": [
-            "Saint Vincent",
-            "Grenadines"
-        ]
+        "alias": ["Saint Vincent", "Grenadines"]
     },
     "WS": {
         "code": "WS",
@@ -1181,9 +977,7 @@
         "code": "RS",
         "name": "Serbia",
         "flag": "🇷🇸",
-        "alias": [
-            "Srbija"
-        ]
+        "alias": ["Srbija"]
     },
     "SC": {
         "code": "SC",
@@ -1201,26 +995,19 @@
         "code": "SG",
         "name": "Singapore",
         "flag": "🇸🇬",
-        "alias": [
-            "Singapura",
-            "Sinhapura"
-        ]
+        "alias": ["Singapura", "Sinhapura"]
     },
     "SK": {
         "code": "SK",
         "name": "Slovakia",
         "flag": "🇸🇰",
-        "alias": [
-            "Slovensko"
-        ]
+        "alias": ["Slovensko"]
     },
     "SI": {
         "code": "SI",
         "name": "Slovenia",
         "flag": "🇸🇮",
-        "alias": [
-            "Slovenija"
-        ]
+        "alias": ["Slovenija"]
     },
     "SB": {
         "code": "SB",
@@ -1238,18 +1025,13 @@
         "code": "ZA",
         "name": "South Africa",
         "flag": "🇿🇦",
-        "alias": [
-            "Suid-Afrika"
-        ]
+        "alias": ["Suid-Afrika"]
     },
     "KR": {
         "code": "KR",
         "name": "South Korea",
         "flag": "🇰🇷",
-        "alias": [
-            "한국",
-            "Hanguk"
-        ]
+        "alias": ["한국", "Hanguk"]
     },
     "SS": {
         "code": "SS",
@@ -1261,9 +1043,7 @@
         "code": "ES",
         "name": "Spain",
         "flag": "🇪🇸",
-        "alias": [
-            "España"
-        ]
+        "alias": ["España"]
     },
     "LK": {
         "code": "LK",
@@ -1287,20 +1067,13 @@
         "code": "SE",
         "name": "Sweden",
         "flag": "🇸🇪",
-        "alias": [
-            "Sverige"
-        ]
+        "alias": ["Sverige"]
     },
     "CH": {
         "code": "CH",
         "name": "Switzerland",
         "flag": "🇨🇭",
-        "alias": [
-            "Schweiz",
-            "Suisse",
-            "Svizzera",
-            "Svizra"
-        ]
+        "alias": ["Schweiz", "Suisse", "Svizzera", "Svizra"]
     },
     "SY": {
         "code": "SY",
@@ -1312,18 +1085,13 @@
         "code": "TW",
         "name": "Taiwan",
         "flag": "🇹🇼",
-        "alias": [
-            "Taipei",
-            "Formosa"
-        ]
+        "alias": ["Taipei", "Formosa"]
     },
     "TJ": {
         "code": "TJ",
         "name": "Tajikistan",
         "flag": "🇹🇯",
-        "alias": [
-            "Тоҷикистон"
-        ]
+        "alias": ["Тоҷикистон"]
     },
     "TZ": {
         "code": "TZ",
@@ -1353,34 +1121,25 @@
         "code": "TT",
         "name": "Trinidad and Tobago",
         "flag": "🇹🇹",
-        "alias": [
-            "Trinidad",
-            "Tobago"
-        ]
+        "alias": ["Trinidad", "Tobago"]
     },
     "TN": {
         "code": "TN",
         "name": "Tunisia",
         "flag": "🇹🇳",
-        "alias": [
-            "تونس"
-        ]
+        "alias": ["تونس"]
     },
     "TR": {
         "code": "TR",
         "name": "Turkey",
         "flag": "🇹🇷",
-        "alias": [
-            "Türkiye"
-        ]
+        "alias": ["Türkiye"]
     },
     "TM": {
         "code": "TM",
         "name": "Turkmenistan",
         "flag": "🇹🇲",
-        "alias": [
-            "Түркменистан"
-        ]
+        "alias": ["Түркменистан"]
     },
     "TV": {
         "code": "TV",
@@ -1398,17 +1157,13 @@
         "code": "UA",
         "name": "Ukraine",
         "flag": "🇺🇦",
-        "alias": [
-            "Україна"
-        ]
+        "alias": ["Україна"]
     },
     "AE": {
         "code": "AE",
         "name": "United Arab Emirates",
         "flag": "🇦🇪",
-        "alias": [
-            "UAE"
-        ]
+        "alias": ["UAE"]
     },
     "GB": {
         "code": "GB",
@@ -1460,10 +1215,7 @@
         "code": "UZ",
         "name": "Uzbekistan",
         "flag": "🇺🇿",
-        "alias": [
-            "Oʻzbekiston",
-            "Ўзбекистон"
-        ]
+        "alias": ["Oʻzbekiston", "Ўзбекистон"]
     },
     "VU": {
         "code": "VU",
@@ -1475,9 +1227,7 @@
         "code": "VA",
         "name": "Vatican",
         "flag": "🇻🇦",
-        "alias": [
-            "Holy See"
-        ]
+        "alias": ["Holy See"]
     },
     "VE": {
         "code": "VE",
@@ -1489,9 +1239,7 @@
         "code": "VN",
         "name": "Vietnam",
         "flag": "🇻🇳",
-        "alias": [
-            "Việt Nam"
-        ]
+        "alias": ["Việt Nam"]
     },
     "YE": {
         "code": "YE",

@@ -1,34 +1,33 @@
-version: '3'
+version: "3"
 services:
-  dev:
-    build:
-      context: .
-      target: dev
-    env_file:
-      - .env
-    environment:
-      - PORT=5173
-    ports:
-      - "5173:5173"
-    volumes:
-      - .:/app
-    depends_on:
-      - mongodb
+    dev:
+        build:
+            context: .
+            target: dev
+        env_file:
+            - .env
+        environment:
+            - PORT=5173
+        ports:
+            - "5173:5173"
+        volumes:
+            - .:/app
+        depends_on:
+            - mongodb
 
-  prod:
-    build:
-      context: .
-      target: prod
-    env_file:
-      - .env
-    ports:
-      - "$PORT:$PORT"
-    depends_on:
-      - mongodb
-    
-  mongodb:
-    image: mongo:latest
-    restart: always
-    expose:
-      - "27017:27017"
-    
+    prod:
+        build:
+            context: .
+            target: prod
+        env_file:
+            - .env
+        ports:
+            - "$PORT:$PORT"
+        depends_on:
+            - mongodb
+
+    mongodb:
+        image: mongo:latest
+        restart: always
+        expose:
+            - "27017:27017"

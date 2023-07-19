@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -14,9 +14,7 @@
                 );
 
                 let localTheme = localStorage.getItem("theme");
-                let systemTheme = systemThemeMatcher.matches
-                    ? "dark"
-                    : "light";
+                let systemTheme = systemThemeMatcher.matches ? "dark" : "light";
 
                 const setTheme = () => {
                     console.log("setTheme", localTheme, systemTheme);
