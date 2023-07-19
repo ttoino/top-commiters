@@ -2,6 +2,7 @@
     import { goto } from "$app/navigation";
     import { page } from "$app/stores";
     import countries from "$lib/countries.json";
+    import { MetaTags } from "svelte-meta-tags";
 
     let value = $page.url.searchParams.get("q") ?? "";
 
@@ -13,10 +14,23 @@
         });
 </script>
 
-<svelte:head>
-    <title>Top commiters</title>
-    <meta name="description" content="Top commiters lists the top users on github, by country" />
-</svelte:head>
+<MetaTags
+    title="Top commiters"
+    description="Top commiters lists the top users on github by country"
+    openGraph={{
+        type: "website",
+        url: "https://commits.toino.pt",
+        title: "Top commiters",
+        description: "Top commiters lists the top users on github by country",
+        images: [
+            {
+                url: "/favicon.svg",
+                width: 128,
+                height: 128,
+                alt: "Top commiters"
+            }
+        ]
+    }} />
 
 <input
     type="search" 

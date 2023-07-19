@@ -4,6 +4,7 @@
     import Row from "$lib/components/Row.svelte";
     import { rankingTypes, type RankingType } from "$lib/rankingTypes";
     import type { PageData } from "./$types";
+    import { MetaTags } from "svelte-meta-tags";
 
     export let data: PageData;
 
@@ -21,10 +22,23 @@
     const updatedAt = new Date(data.metadata.updatedAt).toLocaleString();
 </script>
 
-<svelte:head>
-    <title>Top commiters {flag}</title>
-    <meta name="description" content="Top 100 Github users from {country} sorted by {rankingTypes[rankingType].title}" />
-</svelte:head>
+<MetaTags
+    title="Top commiters {flag}"
+    description="Top 100 Github users from {country} sorted by {rankingTypes[rankingType].title}"
+    openGraph={{
+        type: "website",
+        url: `https://commits.toino.pt/${data.country.code}/${rankingType}`,
+        title: `Top commiters ${flag}`,
+        description: `Top 100 Github users from ${country} sorted by ${rankingTypes[rankingType].title}`,
+        images: [
+            {
+                url: "/favicon.svg",
+                width: 128,
+                height: 128,
+                alt: "Top commiters"
+            }
+        ]
+    }} />
 
 <div class="d-flex flex-row flex-items-center flex-justify-between mb-4">
     <h2>{flag} {country}</h2>
