@@ -2,7 +2,7 @@
     import type { IUser } from "$lib/models/User";
     import type { RankingType } from "$lib/rankingTypes";
     import { rankingTypes } from "$lib/rankingTypes";
-    import octicons from "@primer/octicons";
+    import Octicon from "./Octicon.svelte";
 
     export let rank: number;
     export let user: IUser;
@@ -31,7 +31,7 @@
         {/if}
     </a>
     <span class="Counter">
-        {@html octicons[rankingTypes[rankingType].icon].toSVG()}
+        <Octicon icon={rankingTypes[rankingType].icon} />
         {user[rankingTypes[rankingType].prop]}
     </span>
 </li>
