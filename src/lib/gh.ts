@@ -8,7 +8,7 @@ export const getOctokit = async () => {
     });
 
     const octokit = await app.getInstallationOctokit(
-        parseInt(env.GH_INSTALLATION_ID)
+        parseInt(env.GH_INSTALLATION_ID),
     );
 
     return octokit;

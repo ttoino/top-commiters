@@ -4,10 +4,10 @@
 
 <span class="wrapper">
     <span class="light">
-        {@html octicons["sun"].toSVG({height: 24, width: 24})}
+        {@html octicons["sun"].toSVG({ height: 24, width: 24 })}
     </span>
     <span class="dark">
-        {@html octicons["moon"].toSVG({height: 24, width: 24})}
+        {@html octicons["moon"].toSVG({ height: 24, width: 24 })}
     </span>
     <a
         class="Header-link light"
@@ -16,7 +16,8 @@
         title="Toggle color scheme"
         aria-label="Light color scheme"
         aria-live="polite"
-        on:click|preventDefault={() => localStorage.setItem("theme", "dark")}>
+        on:click|preventDefault={() => localStorage.setItem("theme", "dark")}
+    >
     </a>
     <a
         class="Header-link dark"
@@ -25,7 +26,8 @@
         title="Toggle color scheme"
         aria-label="Dark color scheme"
         aria-live="polite"
-        on:click|preventDefault={() => localStorage.setItem("theme", "light")}>
+        on:click|preventDefault={() => localStorage.setItem("theme", "light")}
+    >
     </a>
 </span>
 

@@ -3,7 +3,7 @@
     import ThemeButton from "./ThemeButton.svelte";
     import logo from "$lib/logo.svg?raw";
 
-    const githubIcon = octicons["mark-github"].toSVG({height: 24, width: 24});
+    const githubIcon = octicons["mark-github"].toSVG({ height: 24, width: 24 });
 </script>
 
 <header class="Header position-sticky top-0">
@@ -18,7 +18,12 @@
     </div>
 
     <div class="Header-item">
-        <a href="https://github.com/ttoino/top-commiters" class="Header-link" title="Github" aria-label="Top committers Github repository">{@html githubIcon}</a>
+        <a
+            href="https://github.com/ttoino/top-commiters"
+            class="Header-link"
+            title="Github"
+            aria-label="Top committers Github repository">{@html githubIcon}</a
+        >
     </div>
 </header>
 

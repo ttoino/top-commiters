@@ -58,7 +58,7 @@ export const countryModels: Record<keyof typeof countries, typeof User> =
             acc[country as keyof typeof countries] = model(country, schema);
             return acc;
         },
-        {} as Record<keyof typeof countries, typeof User>
+        {} as Record<keyof typeof countries, typeof User>,
     );
 
 export default User;

@@ -16,7 +16,7 @@ const schema = new Schema(
             required: true,
         },
     },
-    { timestamps: true }
+    { timestamps: true },
 );
 
 export type IMetadata = InferSchemaType<typeof schema>;

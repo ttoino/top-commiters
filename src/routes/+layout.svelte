@@ -1,9 +1,9 @@
 <script lang="ts">
-	import "@primer/css/dist/primer.css";
+    import "@primer/css/dist/primer.css";
     import Header from "../lib/components/Header.svelte";
 </script>
 
-<Header/>
+<Header />
 
 <main class="container-lg p-4">
     <slot />

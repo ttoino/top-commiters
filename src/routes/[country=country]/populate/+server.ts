@@ -87,7 +87,7 @@ export const GET: PageServerLoad = async ({ params, url }) => {
             {
                 after,
                 q,
-            }
+            },
         );
 
         hasNextPage = search.search.pageInfo.hasNextPage;
@@ -124,7 +124,7 @@ export const GET: PageServerLoad = async ({ params, url }) => {
                     privateContributions,
                     followers: u.followers?.totalCount ?? 0,
                 });
-            })
+            }),
         );
     }
 
@@ -162,7 +162,7 @@ export const GET: PageServerLoad = async ({ params, url }) => {
     await Metadata.updateOne(
         { code: country },
         { code: country, numberOfUsers, minFollowers },
-        { upsert: true }
+        { upsert: true },
     );
     await disconnect();
 
