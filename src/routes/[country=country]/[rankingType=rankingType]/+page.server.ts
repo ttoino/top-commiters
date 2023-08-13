@@ -1,35 +1,17 @@
-import { connect } from "$lib/db";
-import { countryModels, type IUser } from "$lib/models/User";
 import type { PageServerLoad } from "./$types";
-import countries from "$lib/countries.json";
 import { rankingTypes, type RankingType } from "$lib/rankingTypes";
-import { disconnect } from "mongoose";
-import Metadata, { type IMetadata } from "$lib/models/Metadata";
 
-export const load: PageServerLoad = async ({ params }) => {
-    await connect();
-
+export const load: PageServerLoad = async ({ params, fetch }) => {
     const rankingType = params.rankingType.toLowerCase() as RankingType;
     const prop = rankingTypes[rankingType].prop;
 
-    const param = params.country.toUpperCase() as keyof typeof countries;
-    const country = countries[param];
-
-    const model = countryModels[param];
-
-    const users = await model
-        .find()
-        .sort({ [prop]: "desc" })
-        .limit(100)
-        .lean();
-
-    const metadata = await Metadata.findOne({ code: param }).lean();
-
-    await disconnect();
+    const res = await fetch(`/${params.country}/data.json`);
+    const data = await res.json();
+    const users = data.users.sort((a, b) => b[prop] - a[prop]).slice(0, 100);
 
     return {
-        country,
-        users: JSON.parse(JSON.stringify(users)) as IUser[],
-        metadata: JSON.parse(JSON.stringify(metadata)) as IMetadata,
+        ...data,
+        rankingType,
+        users,
     };
 };

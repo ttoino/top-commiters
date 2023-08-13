@@ -14,9 +14,7 @@
     let rankingType: RankingType;
     $: rankingType = $page.params.rankingType as RankingType;
 
-    const { numberOfUsers, minFollowers } = data.metadata;
-
-    const updatedAt = new Date(data.metadata.updatedAt).toLocaleString();
+    const updatedAt = new Date(data.updatedAt).toLocaleString();
 </script>
 
 <MetaTags
@@ -47,8 +45,8 @@
 </div>
 
 <p>
-    Based on the top <strong>{numberOfUsers}</strong> users (with at least
-    <strong>{minFollowers}</strong>
+    Based on the top <strong>{data.numberOfUsers}</strong> users (with at least
+    <strong>{data.minFollowers}</strong>
     followers). Updated on <strong>{updatedAt}</strong>.
 </p>
 

@@ -1,10 +1,8 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
-    import { page } from "$app/stores";
     import countries from "$lib/countries.json";
     import { MetaTags } from "svelte-meta-tags";
 
-    let value = $page.url.searchParams.get("q") ?? "";
+    let value = "";
 
     let filteredCountries: (typeof countries)[keyof typeof countries][] = [];
 
@@ -41,13 +39,6 @@
     id="filter-country"
     class="form-control input-block mb-4 p-3"
     bind:value
-    on:input={function () {
-        $page.url.searchParams.set("q", this.value);
-        goto(this.value ? $page.url : "/", {
-            replaceState: true,
-            keepFocus: true,
-        });
-    }}
 />
 
 <div class="Box">

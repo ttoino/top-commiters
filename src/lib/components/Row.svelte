@@ -1,11 +1,11 @@
 <script lang="ts">
-    import type { IUser } from "$lib/models/User";
+    import type User from "$lib/User";
     import type { RankingType } from "$lib/rankingTypes";
     import { rankingTypes } from "$lib/rankingTypes";
     import Octicon from "./Octicon.svelte";
 
     export let rank: number;
-    export let user: IUser;
+    export let user: User;
     export let rankingType: RankingType;
 </script>
 
@@ -31,7 +31,7 @@
         {/if}
     </a>
     <span class="Counter">
-        <Octicon icon={rankingTypes[rankingType].icon} />
+        <Octicon icon={rankingTypes[rankingType].icon} size={16} />
         {user[rankingTypes[rankingType].prop]}
     </span>
 </li>
