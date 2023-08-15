@@ -109,7 +109,7 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
                 country.name,
             );
 
-            if (errorCount > 10) throw e;
+            if (errorCount > 10) break;
 
             continue;
         }

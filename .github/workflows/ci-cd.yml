@@ -71,3 +71,5 @@ jobs:
           push: true
           tags: registry.toino.pt/commits:latest
           target: prod
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
