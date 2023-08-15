@@ -38,7 +38,7 @@ interface Search {
     };
 }
 
-export const GET: RequestHandler = async ({ params }) => {
+export const GET: RequestHandler = async ({ params, fetch }) => {
     const octokit = await getOctokit();
 
     const countryCode = params.country.toUpperCase() as keyof typeof countries;
@@ -58,41 +58,61 @@ export const GET: RequestHandler = async ({ params }) => {
     let hasNextPage = true;
     let minFollowers: number | undefined = undefined;
 
+    let errorCount = 0;
+
     while (hasNextPage && (!dev || users.size < 1)) {
-        const search: Search = await octokit.graphql<Search>(
-            `
-            query($after: String, $q: String!) {
-                search(query: $q, type: USER, after: $after, first: 10) {
-                    pageInfo {
-                        hasNextPage
-                        endCursor
-                    }
-                    nodes {
-                        ... on User {
-                            name
-                            login
-                            avatarUrl
-                            url
-                            contributionsCollection {
-                                totalCommitContributions
-                                totalIssueContributions
-                                totalPullRequestContributions
-                                totalPullRequestReviewContributions
-                                restrictedContributionsCount
-                            }
-                            followers {
-                                totalCount
+        let search: Search;
+        try {
+            search = await octokit.graphql<Search>(
+                `
+                query($after: String, $q: String!, $count: Int!) {
+                    search(query: $q, type: USER, after: $after, first: $count) {
+                        pageInfo {
+                            hasNextPage
+                            endCursor
+                        }
+                        nodes {
+                            ... on User {
+                                name
+                                login
+                                avatarUrl
+                                url
+                                contributionsCollection {
+                                    totalCommitContributions
+                                    totalIssueContributions
+                                    totalPullRequestContributions
+                                    totalPullRequestReviewContributions
+                                    restrictedContributionsCount
+                                }
+                                followers {
+                                    totalCount
+                                }
                             }
                         }
                     }
                 }
-            }
-        `,
-            {
-                after,
-                q,
-            },
-        );
+            `,
+                {
+                    count: Math.round(50 / (errorCount + 1)),
+                    after,
+                    q,
+                    request: { fetch },
+                },
+            );
+        } catch (e) {
+            errorCount++;
+            console.error(
+                "Caught",
+                errorCount,
+                errorCount > 1 ? "errors" : "error",
+                "fetching users for",
+                country.name,
+            );
+
+            if (errorCount > 10) throw e;
+
+            continue;
+        }
 
         hasNextPage = search.search.pageInfo.hasNextPage;
         after = search.search.pageInfo.endCursor;
@@ -133,6 +153,8 @@ export const GET: RequestHandler = async ({ params }) => {
 
         console.log("Fetched", users.size, "users for", country.name);
     }
+
+    console.log("Finished fetching users for", country.name);
 
     return json({
         country,

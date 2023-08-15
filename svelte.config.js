@@ -15,7 +15,7 @@ const config = {
             fallback: "error.html",
         }),
         prerender: {
-            concurrency: 20,
+            concurrency: 16,
         },
     },
 };
