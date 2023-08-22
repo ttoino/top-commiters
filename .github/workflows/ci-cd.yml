@@ -59,10 +59,6 @@ jobs:
           echo "GH_APP_ID=${{ secrets.GH_APP_ID }}" >> .env
           echo "GH_APP_PRIVATE_KEY='${{ secrets.GH_APP_PRIVATE_KEY }}'" >> .env
           echo "GH_INSTALLATION_ID=${{ secrets.GH_INSTALLATION_ID }}" >> .env
-        env:
-          GH_APP_ID: ${{ secrets.GH_APP_ID }}
-          GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
-          GH_INSTALLATION_ID: ${{ secrets.GH_INSTALLATION_ID }}
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
@@ -71,5 +67,3 @@ jobs:
           push: true
           tags: registry.toino.pt/commits:latest
           target: prod
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
