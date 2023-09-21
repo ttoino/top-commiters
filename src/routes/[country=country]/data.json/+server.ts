@@ -44,10 +44,10 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
     const countryCode = params.country.toUpperCase() as keyof typeof countries;
     const country = countries[countryCode];
 
-    console.log("Fetching users for", country.name);
+    console.log(`${country.flag} Fetching users for ${country.name}`);
 
     const q =
-        countryCode !== "GLOBAL"
+        "type:user " + countryCode !== "GLOBAL"
             ? [country.name, ...country.alias]
                   .map((c) => `location:"${c}"`)
                   .join(" ")
@@ -102,11 +102,9 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
         } catch (e) {
             errorCount++;
             console.error(
-                "Caught",
-                errorCount,
-                errorCount > 1 ? "errors" : "error",
-                "fetching users for",
-                country.name,
+                `${country.flag} Caught ${errorCount} error${
+                    errorCount > 1 ? "s" : ""
+                } fetching users for ${country.name}`,
             );
 
             if (errorCount > 10) break;
@@ -154,10 +152,12 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
                 });
         });
 
-        console.log("Fetched", users.size, "users for", country.name);
+        console.log(
+            `${country.flag} Fetched ${users.size} users for ${country.name}`,
+        );
     }
 
-    console.log("Finished fetching users for", country.name);
+    console.log(`${country.flag} Finished fetching users for ${country.name}`);
 
     return json({
         country,
