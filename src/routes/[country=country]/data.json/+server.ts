@@ -133,7 +133,10 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
                 (u.contributionsCollection?.restrictedContributionsCount ?? 0);
             const followers = u.followers?.totalCount ?? 0;
 
-            minFollowers = Math.min(minFollowers ?? followers, followers);
+            minFollowers = Math.min(
+                minFollowers ?? followers,
+                followers ?? Infinity,
+            );
 
             if (u.login)
                 users.set(u.login, {
