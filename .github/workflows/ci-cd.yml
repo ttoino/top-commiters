@@ -6,6 +6,7 @@ on:
       - main
   schedule:
     - cron: "0 0 * * 0"
+  workflow_dispatch:
 
 jobs:
   lint:
@@ -43,6 +44,7 @@ jobs:
     needs:
       - lint
       - format
+    timeout-minutes: 120
     steps:
       - name: Checkout
         uses: actions/checkout@v2
