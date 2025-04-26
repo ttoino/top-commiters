@@ -10,8 +10,8 @@
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
-        "format": "prettier --plugin prettier-plugin-svelte .",
-        "format:fix": "prettier --plugin prettier-plugin-svelte --write ."
+        "format": "prettier --check .",
+        "format:fix": "prettier --write ."
     },
     "devDependencies": {
         "@poppanator/sveltekit-svg": "^4.1.3",
@@ -38,5 +38,6 @@
         "typescript": "^5.3.3",
         "vite": "^5.0.9"
     },
-    "type": "module"
+    "type": "module",
+    "packageManager": "pnpm@10.9.0+sha512.0486e394640d3c1fb3c9d43d49cf92879ff74f8516959c235308f5a8f62e2e19528a65cdc2a3058f587cde71eba3d5b56327c8c33a97e4c4051ca48a10ca2d5f"
 }
