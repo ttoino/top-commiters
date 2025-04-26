@@ -1,9 +1,17 @@
 {
-    "useTabs": false,
-    "tabWidth": 4,
-    "singleQuote": false,
-    "trailingComma": "all",
     "printWidth": 80,
+    "singleQuote": false,
+    "tabWidth": 4,
+    "trailingComma": "all",
+    "useTabs": false,
     "plugins": ["prettier-plugin-svelte"],
-    "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
+    "overrides": [
+        { "files": "*.svelte", "options": { "parser": "svelte" } },
+        {
+            "files": ".github/**/*.yml",
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
 }

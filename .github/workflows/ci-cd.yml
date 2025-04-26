@@ -76,7 +76,7 @@ jobs:
       - name: Login to Docker registry
         uses: docker/login-action@v2
         with:
-          registry: https://registry.toino.pt 
+          registry: https://registry.toino.pt
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - name: Set up Docker Buildx
