@@ -3,9 +3,10 @@ FROM node:current-alpine AS build
 WORKDIR /app
 
 COPY package.json .
-COPY yarn.lock .
+COPY pnpm-lock.yaml .
 
-RUN yarn
+RUN corepack enable
+RUN pnpm install --frozen-lockfile
 
 COPY svelte.config.js .
 COPY tsconfig.json .
@@ -14,7 +15,7 @@ COPY .env .
 COPY static static
 COPY src src
 
-RUN yarn build
+RUN pnpm run build
 
 FROM alpine:latest AS prod
 
