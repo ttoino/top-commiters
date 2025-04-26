@@ -1,9 +1,11 @@
-import { getOctokit } from "$lib/gh";
-import type { EntryGenerator, RequestHandler } from "./$types";
-import countries from "$lib/countries.json";
 import type User from "$lib/User";
-import { dev } from "$app/environment";
+
 import { json } from "@sveltejs/kit";
+import { dev } from "$app/environment";
+import countries from "$lib/countries.json";
+import { getOctokit } from "$lib/gh";
+
+import type { EntryGenerator, RequestHandler } from "./$types";
 
 export const prerender = true;
 
@@ -14,31 +16,31 @@ export const entries: EntryGenerator = () =>
 
 interface Search {
     search: {
-        pageInfo: {
-            hasNextPage: boolean;
-            endCursor: string;
-        };
-        userCount: number;
         nodes: {
-            name?: string;
-            login: string;
             avatarUrl: string;
-            url: string;
             contributionsCollection?: {
+                restrictedContributionsCount: number;
                 totalCommitContributions: number;
                 totalIssueContributions: number;
                 totalPullRequestContributions: number;
                 totalPullRequestReviewContributions: number;
-                restrictedContributionsCount: number;
             };
             followers: {
                 totalCount: number;
             };
+            login: string;
+            name?: string;
+            url: string;
         }[];
+        pageInfo: {
+            endCursor: string;
+            hasNextPage: boolean;
+        };
+        userCount: number;
     };
 }
 
-export const GET: RequestHandler = async ({ params, fetch }) => {
+export const GET: RequestHandler = async ({ fetch, params }) => {
     const octokit = await getOctokit();
 
     const countryCode = params.country.toUpperCase() as keyof typeof countries;
@@ -93,13 +95,13 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
                 }
             `,
                 {
-                    count: Math.round(50 / (errorCount + 1)),
                     after,
+                    count: Math.round(50 / (errorCount + 1)),
                     q,
                     request: { fetch },
                 },
             );
-        } catch (e) {
+        } catch {
             errorCount++;
             console.error(
                 `${country.flag} Caught ${errorCount} error${
@@ -138,17 +140,17 @@ export const GET: RequestHandler = async ({ params, fetch }) => {
 
             if (u.login)
                 users.set(u.login, {
-                    name: u.name,
-                    login: u.login,
                     avatar: u.avatarUrl,
-                    url: u.url,
                     commits,
+                    contributions,
+                    followers,
                     issues,
+                    login: u.login,
+                    name: u.name,
+                    privateContributions,
                     pullRequests,
                     reviews,
-                    contributions,
-                    privateContributions,
-                    followers,
+                    url: u.url,
                 });
         });
 

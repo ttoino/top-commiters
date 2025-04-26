@@ -1,7 +1,8 @@
-import type { PageServerLoad } from "./$types";
-import { rankingTypes, type RankingType } from "$lib/rankingTypes";
+import { type RankingType, rankingTypes } from "$lib/rankingTypes";
 
-export const load: PageServerLoad = async ({ params, fetch }) => {
+import type { PageServerLoad } from "./$types";
+
+export const load: PageServerLoad = async ({ fetch, params }) => {
     const rankingType = params.rankingType.toLowerCase() as RankingType;
     const prop = rankingTypes[rankingType].prop;
 

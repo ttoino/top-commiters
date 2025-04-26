@@ -1,7 +1,8 @@
 <script lang="ts">
-    import ThemeButton from "./ThemeButton.svelte";
     import Logo from "$lib/logo.svg?component";
+
     import Octicon from "./Octicon.svelte";
+    import ThemeButton from "./ThemeButton.svelte";
 </script>
 
 <header class="Header position-sticky top-0">

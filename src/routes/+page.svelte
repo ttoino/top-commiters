@@ -17,18 +17,18 @@
     title="Top commiters"
     description="Top commiters lists the top users on github by country"
     openGraph={{
-        type: "website",
-        url: "https://commits.toino.pt",
-        title: "Top commiters",
         description: "Top commiters lists the top users on github by country",
         images: [
             {
+                alt: "Top commiters",
+                height: 128,
                 url: "/favicon.svg",
                 width: 128,
-                height: 128,
-                alt: "Top commiters",
             },
         ],
+        title: "Top commiters",
+        type: "website",
+        url: "https://commits.toino.pt",
     }}
 />
 
@@ -48,7 +48,7 @@
         </div>
     {:else}
         <ul>
-            {#each filteredCountries as country}
+            {#each filteredCountries as country (country.code)}
                 <li
                     class="Box-row d-flex flex-row flex-items-center position-relative"
                 >

@@ -1,33 +1,33 @@
 export const rankingTypes = {
-    contribs: {
-        prop: "contributions",
-        title: "Contributions",
-        icon: "graph",
-    },
-    private: {
-        prop: "privateContributions",
-        title: "Private Contributions",
-        icon: "lock",
-    },
     commits: {
+        icon: "git-commit",
         prop: "commits",
         title: "Commits",
-        icon: "git-commit",
     },
-    prs: {
-        prop: "pullRequests",
-        title: "Pull Requests",
-        icon: "git-pull-request",
+    contribs: {
+        icon: "graph",
+        prop: "contributions",
+        title: "Contributions",
     },
     issues: {
+        icon: "issue-opened",
         prop: "issues",
         title: "Issues",
-        icon: "issue-opened",
+    },
+    private: {
+        icon: "lock",
+        prop: "privateContributions",
+        title: "Private Contributions",
+    },
+    prs: {
+        icon: "git-pull-request",
+        prop: "pullRequests",
+        title: "Pull Requests",
     },
     reviews: {
+        icon: "code-review",
         prop: "reviews",
         title: "Reviews",
-        icon: "code-review",
     },
 } as const;
 

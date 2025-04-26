@@ -2,9 +2,10 @@
     import { page } from "$app/stores";
     import RankingsSelect from "$lib/components/RankingsSelect.svelte";
     import Row from "$lib/components/Row.svelte";
-    import { rankingTypes, type RankingType } from "$lib/rankingTypes";
-    import type { PageData } from "./$types";
+    import { type RankingType, rankingTypes } from "$lib/rankingTypes";
     import { MetaTags } from "svelte-meta-tags";
+
+    import type { PageData } from "./$types";
 
     export let data: PageData;
 
@@ -23,18 +24,18 @@
         rankingType
     ].title}"
     openGraph={{
-        type: "website",
-        url: `https://commits.toino.pt/${data.country.code}/${rankingType}`,
-        title: `Top commiters ${flag}`,
         description: `Top 100 Github users from ${country} sorted by ${rankingTypes[rankingType].title}`,
         images: [
             {
+                alt: "Top commiters",
+                height: 128,
                 url: "/favicon.svg",
                 width: 128,
-                height: 128,
-                alt: "Top commiters",
             },
         ],
+        title: `Top commiters ${flag}`,
+        type: "website",
+        url: `https://commits.toino.pt/${data.country.code}/${rankingType}`,
     }}
 />
 
@@ -57,7 +58,7 @@
         </div>
     {:else}
         <ol>
-            {#each data.users as user, i}
+            {#each data.users as user, i (user.login)}
                 <Row rank={i + 1} {user} {rankingType} />
             {/each}
         </ol>

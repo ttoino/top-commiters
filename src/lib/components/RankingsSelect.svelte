@@ -1,7 +1,7 @@
 <script lang="ts">
     import {
-        rankingTypeIndices,
         type RankingType,
+        rankingTypeIndices,
         rankingTypes,
     } from "$lib/rankingTypes";
 
@@ -11,7 +11,7 @@
 
 <div class="subnav d-lg-block d-none mb-0">
     <nav class="subnav-links">
-        {#each rankingTypeIndices as t}
+        {#each rankingTypeIndices as t (t)}
             <a
                 href="{urlPrefix}/{t}"
                 class="subnav-item"
@@ -32,7 +32,7 @@
     </summary>
 
     <ul class="dropdown-menu dropdown-menu-sw">
-        {#each rankingTypeIndices as t}
+        {#each rankingTypeIndices as t (t)}
             {#if t !== current}
                 <li>
                     <a href="{urlPrefix}/{t}" class="dropdown-item">

@@ -1,7 +1,9 @@
 <script lang="ts">
-    import type User from "$lib/User";
     import type { RankingType } from "$lib/rankingTypes";
+    import type User from "$lib/User";
+
     import { rankingTypes } from "$lib/rankingTypes";
+
     import Octicon from "./Octicon.svelte";
 
     export let rank: number;
