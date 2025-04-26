@@ -60,6 +60,11 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Setup .env
+        run: |
+          echo "GH_APP_ID=''" >> .env
+          echo "GH_APP_PRIVATE_KEY=''" >> .env
+          echo "GH_INSTALLATION_ID=''" >> .env
       - name: Lint
         run: pnpm run check
 

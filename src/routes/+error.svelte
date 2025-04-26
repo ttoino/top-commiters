@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { page } from "$app/stores";
+    import { page } from "$app/state";
 </script>
 
 <div class="blankslate">
     <h2 class="blankslate-heading">
-        {$page.status}
+        {page.status}
     </h2>
     <p>
-        {$page.error?.message}
+        {page.error?.message}
     </p>
 </div>

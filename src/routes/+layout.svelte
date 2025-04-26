@@ -1,13 +1,21 @@
 <script lang="ts">
     import "@primer/css/dist/primer.css";
 
+    import type { Snippet } from "svelte";
+
     import Header from "../lib/components/Header.svelte";
+
+    let {
+        children,
+    }: {
+        children?: Snippet;
+    } = $props();
 </script>
 
 <Header />
 
 <main class="container-lg p-4">
-    <slot />
+    {@render children?.()}
 </main>
 
 <style>

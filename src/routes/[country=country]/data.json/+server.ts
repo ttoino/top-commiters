@@ -1,3 +1,4 @@
+import type Response from "$lib/Response";
 import type User from "$lib/User";
 
 import { json } from "@sveltejs/kit";
@@ -168,5 +169,5 @@ export const GET: RequestHandler = async ({ fetch, params }) => {
         numberOfUsers: users.size,
         updatedAt: new Date().toISOString(),
         users: [...users.values()],
-    });
+    } satisfies Response);
 };

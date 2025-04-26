@@ -3,10 +3,15 @@
 
     import octicons from "@primer/octicons";
 
-    export let icon: octicons.IconName;
-    export let size: number = 24;
+    let {
+        icon,
+        size = 24,
+    }: {
+        icon: octicons.IconName;
+        size?: number;
+    } = $props();
 
-    $: svg = octicons[icon].toSVG({ height: size, width: size });
+    let svg = $derived(octicons[icon].toSVG({ height: size, width: size }));
 </script>
 
 {@html svg}

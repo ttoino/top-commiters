@@ -6,9 +6,15 @@
 
     import Octicon from "./Octicon.svelte";
 
-    export let rank: number;
-    export let user: User;
-    export let rankingType: RankingType;
+    let {
+        rank,
+        rankingType,
+        user,
+    }: {
+        rank: number;
+        rankingType: RankingType;
+        user: User;
+    } = $props();
 </script>
 
 <li class="Box-row d-flex flex-row flex-items-center position-relative">

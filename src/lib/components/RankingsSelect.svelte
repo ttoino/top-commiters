@@ -5,8 +5,13 @@
         rankingTypes,
     } from "$lib/rankingTypes";
 
-    export let current: RankingType;
-    export let urlPrefix: string;
+    let {
+        current,
+        urlPrefix,
+    }: {
+        current: RankingType;
+        urlPrefix: string;
+    } = $props();
 </script>
 
 <div class="subnav d-lg-block d-none mb-0">

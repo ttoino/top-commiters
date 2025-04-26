@@ -2,15 +2,15 @@
     import countries from "$lib/countries.json";
     import { MetaTags } from "svelte-meta-tags";
 
-    let value = "";
+    let value = $state("");
 
-    let filteredCountries: (typeof countries)[keyof typeof countries][] = [];
-
-    $: filteredCountries = Object.values(countries).filter((country) => {
-        return [country.name, country.flag, country.code, ...country.alias]
-            .map((s) => s.toLowerCase().includes(value.toLowerCase()))
-            .includes(true);
-    });
+    let filteredCountries = $derived(
+        Object.values(countries).filter((country) =>
+            [country.name, country.flag, country.code, ...country.alias]
+                .map((s) => s.toLowerCase().includes(value.toLowerCase()))
+                .includes(true),
+        ),
+    );
 </script>
 
 <MetaTags

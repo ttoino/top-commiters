@@ -14,7 +14,7 @@
         title="Toggle color scheme"
         aria-label="Light color scheme"
         aria-live="polite"
-        on:click|preventDefault={() => localStorage.setItem("theme", "dark")}
+        onclick={() => localStorage.setItem("theme", "dark")}
     >
     </button>
     <button
@@ -22,7 +22,7 @@
         title="Toggle color scheme"
         aria-label="Dark color scheme"
         aria-live="polite"
-        on:click|preventDefault={() => localStorage.setItem("theme", "light")}
+        onclick={() => localStorage.setItem("theme", "light")}
     >
     </button>
 </span>

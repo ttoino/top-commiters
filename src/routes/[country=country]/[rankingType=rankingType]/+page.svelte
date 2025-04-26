@@ -1,30 +1,29 @@
 <script lang="ts">
-    import { page } from "$app/stores";
     import RankingsSelect from "$lib/components/RankingsSelect.svelte";
     import Row from "$lib/components/Row.svelte";
-    import { type RankingType, rankingTypes } from "$lib/rankingTypes";
+    import { rankingTypes } from "$lib/rankingTypes";
     import { MetaTags } from "svelte-meta-tags";
 
     import type { PageData } from "./$types";
 
-    export let data: PageData;
+    let {
+        data,
+    }: {
+        data: PageData;
+    } = $props();
 
-    const country = data.country.name;
-    const flag = data.country.flag;
-    const urlPrefix = `/${data.country.code}`;
-    let rankingType: RankingType;
-    $: rankingType = $page.params.rankingType as RankingType;
-
-    const updatedAt = new Date(data.updatedAt).toLocaleString();
+    let country = $derived(data.country.name);
+    let flag = $derived(data.country.flag);
+    let urlPrefix = $derived(`/${data.country.code}`);
+    let rankingType = $derived(rankingTypes[data.rankingType]);
+    let updatedAt = $derived(new Date(data.updatedAt).toLocaleString());
 </script>
 
 <MetaTags
     title="Top commiters {flag}"
-    description="Top 100 Github users from {country} sorted by {rankingTypes[
-        rankingType
-    ].title}"
+    description="Top 100 Github users from {country} sorted by {rankingType.title}"
     openGraph={{
-        description: `Top 100 Github users from ${country} sorted by ${rankingTypes[rankingType].title}`,
+        description: `Top 100 Github users from ${country} sorted by ${rankingType.title}`,
         images: [
             {
                 alt: "Top commiters",
@@ -42,7 +41,7 @@
 <div class="d-flex flex-row flex-items-center flex-justify-between mb-4">
     <h2>{flag} {country}</h2>
 
-    <RankingsSelect current={rankingType} {urlPrefix} />
+    <RankingsSelect current={data.rankingType} {urlPrefix} />
 </div>
 
 <p>
@@ -59,7 +58,7 @@
     {:else}
         <ol>
             {#each data.users as user, i (user.login)}
-                <Row rank={i + 1} {user} {rankingType} />
+                <Row rank={i + 1} {user} rankingType={data.rankingType} />
             {/each}
         </ol>
     {/if}
