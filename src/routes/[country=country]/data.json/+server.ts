@@ -102,8 +102,15 @@ export const GET: RequestHandler = async ({ fetch, params }) => {
                     request: { fetch },
                 },
             );
-        } catch {
+
+            if (search == undefined)
+                throw new Error("Search returned undefined");
+        } catch (e) {
             errorCount++;
+            console.error(
+                `${country.flag} Error fetching users for ${country.name}:`,
+                e,
+            );
             console.error(
                 `${country.flag} Caught ${errorCount} error${
                     errorCount > 1 ? "s" : ""
