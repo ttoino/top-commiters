@@ -1,0 +1,22 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "."
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 20
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "github-actions"
+    directory: "."
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 20
+    groups:
+      dependencies:
+        patterns:
+          - "*"
