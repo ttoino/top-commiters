@@ -1,6 +1,9 @@
 name: CI/CD
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -65,10 +68,12 @@ jobs:
           echo "GH_APP_ID=''" >> .env
           echo "GH_APP_PRIVATE_KEY=''" >> .env
           echo "GH_INSTALLATION_ID=''" >> .env
-      - name: Lint
+      - name: Typecheck
         run: pnpm run check
 
   deploy:
+    name: Deploy
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs:
       - format
