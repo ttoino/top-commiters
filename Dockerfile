@@ -17,12 +17,6 @@ COPY src src
 
 RUN pnpm run build
 
-FROM alpine:latest AS prod
+FROM caddy:alpine AS prod
 
-WORKDIR /app
-
-RUN rm -rf ./*
-
-COPY --from=build /app/build .
-
-CMD [ "tail", "-f", "/dev/null" ]
+COPY --from=build /app/build /usr/share/caddy
