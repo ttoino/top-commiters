@@ -18,8 +18,8 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1(rollup@4.40.0)(svelte@5.33.11)(vite@6.3.5(@types/node@22.15.2))
       '@primer/css':
-        specifier: ^22.0.0
-        version: 22.0.0(@primer/primitives@10.5.0)
+        specifier: <22.0.0
+        version: 21.5.1(@primer/primitives@10.5.0)
       '@primer/octicons':
         specifier: ^19.15.1
         version: 19.15.2
@@ -465,8 +465,8 @@ packages:
       svelte: '>=5.x'
       vite: '>=5.x || >= 6.x'
 
-  '@primer/css@22.0.0':
-    resolution: {integrity: sha512-79D4I8piJeMk2wM/gMZlyN7n6un1J9W1HlSvYLE3bzcpblo5nPt7XiF38zEueDs17EWuW0b4YMv4uV/+U5KFfw==}
+  '@primer/css@21.5.1':
+    resolution: {integrity: sha512-/dw7P2eHbLEq77E6WVhVPud/HtyzAzlQgX6f8HQ/i0l1r5EZeh9r7/THgMUt0MgdSlJb7t+WT+V+zN8EDkU9mw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@primer/primitives': 9.x || 10.x
@@ -1788,7 +1788,7 @@ snapshots:
     transitivePeerDependencies:
       - rollup
 
-  '@primer/css@22.0.0(@primer/primitives@10.5.0)':
+  '@primer/css@21.5.1(@primer/primitives@10.5.0)':
     dependencies:
       '@primer/primitives': 10.5.0
 
