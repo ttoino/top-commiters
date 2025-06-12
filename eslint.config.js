@@ -12,18 +12,59 @@ const gitignorePath = fileURLToPath(new URL("./.gitignore", import.meta.url));
 
 export default ts.config(
     includeIgnoreFile(gitignorePath),
+
     js.configs.recommended,
     ...ts.configs.strict,
-    ...svelte.configs.recommended,
-    prettier,
-    ...svelte.configs.prettier,
-    perfectionist.configs["recommended-alphabetical"],
     {
         languageOptions: {
             globals: {
                 ...globals.browser,
                 ...globals.node,
             },
+        },
+    },
+
+    perfectionist.configs["recommended-alphabetical"],
+    {
+        rules: Object.fromEntries(
+            [
+                "classes",
+                "enums",
+                "exports",
+                "interfaces",
+                "imports",
+                "named-exports",
+                "modules",
+                "named-imports",
+                "object-types",
+                "objects",
+                "variable-declarations",
+            ].map((rule) => [
+                `perfectionist/sort-${rule}`,
+                [
+                    "error",
+                    {
+                        partitionByComment: "^@sort",
+                    },
+                ],
+            ]),
+        ),
+    },
+
+    ...svelte.configs.all,
+    {
+        rules: {
+            "svelte/block-lang": [
+                "error",
+                {
+                    script: ["ts"],
+                },
+            ],
+            "svelte/consistent-selector-style": "off",
+            "svelte/experimental-require-strict-events": "off",
+            "svelte/no-inline-styles": "off",
+            "svelte/no-unused-class-name": "off",
+            "svelte/require-optimized-style-attribute": "off",
         },
     },
     {
@@ -39,4 +80,7 @@ export default ts.config(
             },
         },
     },
+
+    prettier,
+    ...svelte.configs.prettier,
 );

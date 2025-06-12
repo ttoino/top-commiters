@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from "$app/paths";
     import Logo from "$lib/logo.svg?component";
 
     import Octicon from "./Octicon.svelte";
@@ -7,7 +8,7 @@
 
 <header class="Header position-sticky top-0">
     <h1 class="Header-item h2 mr-auto">
-        <a href="/" class="Header-link">
+        <a class="Header-link" href="{base}/">
             <Logo /><span class="ml-2">Top commiters</span>
         </a>
     </h1>
@@ -18,12 +19,15 @@
 
     <div class="Header-item">
         <a
-            href="https://github.com/ttoino/top-commiters"
             class="Header-link"
-            title="Github"
             aria-label="Top committers Github repository"
-            ><Octicon icon="mark-github" /></a
+            href="https://github.com/ttoino/top-commiters"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Github"
         >
+            <Octicon icon="mark-github" />
+        </a>
     </div>
 </header>
 

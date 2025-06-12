@@ -11,18 +11,20 @@
     </span>
     <button
         class="Header-link light"
-        title="Toggle color scheme"
         aria-label="Light color scheme"
         aria-live="polite"
         onclick={() => localStorage.setItem("theme", "dark")}
+        title="Toggle color scheme"
+        type="button"
     >
     </button>
     <button
         class="Header-link dark"
-        title="Toggle color scheme"
         aria-label="Dark color scheme"
         aria-live="polite"
         onclick={() => localStorage.setItem("theme", "light")}
+        title="Toggle color scheme"
+        type="button"
     >
     </button>
 </span>

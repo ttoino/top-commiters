@@ -20,14 +20,21 @@
 <li class="Box-row d-flex flex-row flex-items-center position-relative">
     <span class="Label Label--large mr-3">{rank}</span>
     <img
-        src="{user.avatar}&s=96"
-        alt=""
         class="avatar mr-3"
-        width="32"
+        alt=""
         height="32"
         loading="lazy"
+        src="{user.avatar}&s=96"
+        width="32"
     />
-    <a href={user.url} class="Box-row-link mr-auto">
+    <!-- eslint-disable svelte/no-navigation-without-base -->
+    <a
+        class="Box-row-link mr-auto"
+        href={user.url}
+        rel="noopener noreferrer"
+        target="_blank"
+    >
+        <!-- eslint-enable svelte/no-navigation-without-base -->
         {#if user.name}
             {user.name}
 

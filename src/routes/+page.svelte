@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from "$app/paths";
     import countries from "$lib/countries.json";
     import { MetaTags } from "svelte-meta-tags";
 
@@ -14,7 +15,6 @@
 </script>
 
 <MetaTags
-    title="Top commiters"
     description="Top commiters lists the top users on github by country"
     openGraph={{
         description: "Top commiters lists the top users on github by country",
@@ -30,14 +30,15 @@
         type: "website",
         url: "https://commits.toino.pt",
     }}
+    title="Top commiters"
 />
 
 <input
-    type="search"
-    placeholder="🔍 Search countries..."
-    name="filter-country"
     id="filter-country"
+    name="filter-country"
     class="form-control input-block mb-4 p-3"
+    placeholder="🔍 Search countries..."
+    type="search"
     bind:value
 />
 
@@ -53,8 +54,8 @@
                     class="Box-row d-flex flex-row flex-items-center position-relative"
                 >
                     <a
-                        href={`/${country.code}/contribs`}
                         class="Box-row-link mr-auto"
+                        href="{base}/{country.code}/contribs"
                     >
                         {country.flag}
                         {country.name}

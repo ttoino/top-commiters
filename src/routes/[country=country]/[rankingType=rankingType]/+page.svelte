@@ -14,13 +14,11 @@
 
     let country = $derived(data.country.name);
     let flag = $derived(data.country.flag);
-    let urlPrefix = $derived(`/${data.country.code}`);
     let rankingType = $derived(rankingTypes[data.rankingType]);
     let updatedAt = $derived(new Date(data.updatedAt).toLocaleString());
 </script>
 
 <MetaTags
-    title="Top commiters {flag}"
     description="Top 100 Github users from {country} sorted by {rankingType.title}"
     openGraph={{
         description: `Top 100 Github users from ${country} sorted by ${rankingType.title}`,
@@ -36,12 +34,13 @@
         type: "website",
         url: `https://commits.toino.pt/${data.country.code}/${rankingType}`,
     }}
+    title="Top commiters {flag}"
 />
 
 <div class="d-flex flex-row flex-items-center flex-justify-between mb-4">
     <h2>{flag} {country}</h2>
 
-    <RankingsSelect current={data.rankingType} {urlPrefix} />
+    <RankingsSelect current={data.rankingType} urlPrefix={data.country.code} />
 </div>
 
 <p>
@@ -58,7 +57,7 @@
     {:else}
         <ol>
             {#each data.users as user, i (user.login)}
-                <Row rank={i + 1} {user} rankingType={data.rankingType} />
+                <Row rank={i + 1} rankingType={data.rankingType} {user} />
             {/each}
         </ol>
     {/if}

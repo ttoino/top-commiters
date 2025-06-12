@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from "$app/paths";
     import {
         type RankingType,
         rankingTypeIndices,
@@ -18,9 +19,9 @@
     <nav class="subnav-links">
         {#each rankingTypeIndices as t (t)}
             <a
-                href="{urlPrefix}/{t}"
                 class="subnav-item"
                 aria-current={current === t ? "page" : "false"}
+                href="{base}/{urlPrefix}/{t}"
             >
                 {rankingTypes[t].title}
             </a>
@@ -40,7 +41,7 @@
         {#each rankingTypeIndices as t (t)}
             {#if t !== current}
                 <li>
-                    <a href="{urlPrefix}/{t}" class="dropdown-item">
+                    <a class="dropdown-item" href="{base}/{urlPrefix}/{t}">
                         {rankingTypes[t].title}
                     </a>
                 </li>
