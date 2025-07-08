@@ -10,6 +10,8 @@ updates:
       dependencies:
         patterns:
           - "*"
+    ignore:
+      - dependency-name: "@primer/css"
 
   - package-ecosystem: "github-actions"
     directory: "."
