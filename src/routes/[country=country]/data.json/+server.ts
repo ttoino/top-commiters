@@ -2,9 +2,8 @@ import type Response from "$lib/Response";
 import type User from "$lib/User";
 
 import { json } from "@sveltejs/kit";
-import { dev } from "$app/environment";
 import countries from "$lib/countries.json";
-import { getOctokit } from "$lib/gh";
+import { octokit } from "$lib/server/gh";
 
 import type { EntryGenerator, RequestHandler } from "./$types";
 
@@ -33,17 +32,11 @@ interface Search {
             name?: string;
             url: string;
         }[];
-        pageInfo: {
-            endCursor: string;
-            hasNextPage: boolean;
-        };
         userCount: number;
     };
 }
 
 export const GET: RequestHandler = async ({ fetch, params }) => {
-    const octokit = await getOctokit();
-
     const countryCode = params.country.toUpperCase() as keyof typeof countries;
     const country = countries[countryCode];
 
@@ -57,75 +50,43 @@ export const GET: RequestHandler = async ({ fetch, params }) => {
             : "";
 
     const users: Map<string, User> = new Map();
-    let after = undefined;
-    let hasNextPage = true;
     let minFollowers: number | undefined = undefined;
 
-    let errorCount = 0;
-
-    while (hasNextPage && (!dev || users.size < 1)) {
-        let search: Search;
-        try {
-            search = await octokit.graphql<Search>(
-                `
-                query($after: String, $q: String!, $count: Int!) {
-                    search(query: $q, type: USER, after: $after, first: $count) {
-                        pageInfo {
-                            hasNextPage
-                            endCursor
-                        }
-                        nodes {
-                            ... on User {
-                                name
-                                login
-                                avatarUrl
-                                url
-                                contributionsCollection {
-                                    totalCommitContributions
-                                    totalIssueContributions
-                                    totalPullRequestContributions
-                                    totalPullRequestReviewContributions
-                                    restrictedContributionsCount
-                                }
-                                followers {
-                                    totalCount
-                                }
+    try {
+        const { search } = await octokit.graphql.paginate<Search>(
+            `query($cursor: String, $q: String!) {
+                search(query: $q, type: USER, after: $cursor, first: 50) {
+                    nodes {
+                        ... on User {
+                            name
+                            login
+                            avatarUrl
+                            url
+                            contributionsCollection {
+                                totalCommitContributions
+                                totalIssueContributions
+                                totalPullRequestContributions
+                                totalPullRequestReviewContributions
+                                restrictedContributionsCount
+                            }
+                            followers {
+                                totalCount
                             }
                         }
                     }
+                    pageInfo {
+                        hasNextPage
+                        endCursor
+                    }
                 }
-            `,
-                {
-                    after,
-                    count: Math.round(50 / (errorCount + 1)),
-                    q,
-                    request: { fetch },
-                },
-            );
+            }`,
+            {
+                q,
+                request: { fetch },
+            },
+        );
 
-            if (search == undefined)
-                throw new Error("Search returned undefined");
-        } catch (e) {
-            errorCount++;
-            console.error(
-                `${country.flag} Error fetching users for ${country.name}:`,
-                e,
-            );
-            console.error(
-                `${country.flag} Caught ${errorCount} error${
-                    errorCount > 1 ? "s" : ""
-                } fetching users for ${country.name}`,
-            );
-
-            if (errorCount > 10) break;
-
-            continue;
-        }
-
-        hasNextPage = search.search.pageInfo.hasNextPage;
-        after = search.search.pageInfo.endCursor;
-
-        search.search.nodes.forEach((u) => {
+        for (const u of search.nodes) {
             const commits =
                 u.contributionsCollection?.totalCommitContributions ?? 0;
             const issues =
@@ -160,14 +121,16 @@ export const GET: RequestHandler = async ({ fetch, params }) => {
                     reviews,
                     url: u.url,
                 });
-        });
+        }
 
         console.log(
             `${country.flag} Fetched ${users.size} users for ${country.name}`,
         );
+    } catch {
+        console.error(
+            `${country.flag} Error fetching users for ${country.name}`,
+        );
     }
-
-    console.log(`${country.flag} Finished fetching users for ${country.name}`);
 
     return json({
         country,
