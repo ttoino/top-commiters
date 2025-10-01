@@ -55,7 +55,7 @@ export const GET: RequestHandler = async ({ fetch, params }) => {
     try {
         const { search } = await octokit.graphql.paginate<Search>(
             `query($cursor: String, $q: String!) {
-                search(query: $q, type: USER, after: $cursor, first: 50) {
+                search(query: $q, type: USER, after: $cursor, first: 10) {
                     nodes {
                         ... on User {
                             name
@@ -126,10 +126,12 @@ export const GET: RequestHandler = async ({ fetch, params }) => {
         console.log(
             `${country.flag} Fetched ${users.size} users for ${country.name}`,
         );
-    } catch {
+    } catch (error) {
         console.error(
             `${country.flag} Error fetching users for ${country.name}`,
         );
+
+        console.error(JSON.stringify(error));
     }
 
     return json({

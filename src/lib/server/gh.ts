@@ -21,6 +21,7 @@ export const octokit = new (Octokit.plugin(paginateGraphQL, retry, throttling))(
             retries: 10,
             retryAfter: 60,
         },
+        retry: { doNotRetry: [] },
         throttle: {
             onRateLimit: () => true,
             onSecondaryRateLimit: () => true,

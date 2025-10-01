@@ -8,7 +8,7 @@ const config = {
             fallback: "error.html",
         }),
         prerender: {
-            concurrency: 16,
+            concurrency: 64,
         },
     },
     preprocess: vitePreprocess(),
