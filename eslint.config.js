@@ -63,6 +63,7 @@ export default ts.config(
             "svelte/consistent-selector-style": "off",
             "svelte/experimental-require-strict-events": "off",
             "svelte/no-inline-styles": "off",
+            "svelte/no-navigation-without-base": "off",
             "svelte/no-unused-class-name": "off",
             "svelte/require-optimized-style-attribute": "off",
         },
