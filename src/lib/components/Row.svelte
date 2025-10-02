@@ -27,14 +27,14 @@
         src="{user.avatar}&s=96"
         width="32"
     />
-    <!-- eslint-disable svelte/no-navigation-without-base -->
+    <!-- eslint-disable svelte/no-navigation-without-resolve -->
     <a
         class="Box-row-link mr-auto"
         href={user.url}
         rel="noopener noreferrer"
         target="_blank"
     >
-        <!-- eslint-enable svelte/no-navigation-without-base -->
+        <!-- eslint-enable svelte/no-navigation-without-resolve -->
         {#if user.name}
             {user.name}
 

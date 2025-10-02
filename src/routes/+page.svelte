@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { base } from "$app/paths";
+    import { resolve } from "$app/paths";
     import countries from "$lib/countries.json";
     import { MetaTags } from "svelte-meta-tags";
 
@@ -55,7 +55,13 @@
                 >
                     <a
                         class="Box-row-link mr-auto"
-                        href="{base}/{country.code}/contribs"
+                        href={resolve(
+                            "/[country=country]/[rankingType=rankingType]",
+                            {
+                                country: country.code,
+                                rankingType: "contribs",
+                            },
+                        )}
                     >
                         {country.flag}
                         {country.name}

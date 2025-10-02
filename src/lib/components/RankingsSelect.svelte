@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { base } from "$app/paths";
+    import { resolve } from "$app/paths";
     import {
         type RankingType,
         rankingTypeIndices,
@@ -21,7 +21,10 @@
             <a
                 class="subnav-item"
                 aria-current={current === t ? "page" : "false"}
-                href="{base}/{urlPrefix}/{t}"
+                href={resolve("/[country=country]/[rankingType=rankingType]", {
+                    country: urlPrefix,
+                    rankingType: current,
+                })}
             >
                 {rankingTypes[t].title}
             </a>
@@ -41,7 +44,16 @@
         {#each rankingTypeIndices as t (t)}
             {#if t !== current}
                 <li>
-                    <a class="dropdown-item" href="{base}/{urlPrefix}/{t}">
+                    <a
+                        class="dropdown-item"
+                        href={resolve(
+                            "/[country=country]/[rankingType=rankingType]",
+                            {
+                                country: urlPrefix,
+                                rankingType: t,
+                            },
+                        )}
+                    >
                         {rankingTypes[t].title}
                     </a>
                 </li>

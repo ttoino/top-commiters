@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { base } from "$app/paths";
+    import { resolve } from "$app/paths";
     import Logo from "$lib/logo.svg?component";
 
     import Octicon from "./Octicon.svelte";
@@ -8,7 +8,7 @@
 
 <header class="Header position-sticky top-0">
     <h1 class="Header-item h2 mr-auto">
-        <a class="Header-link" href="{base}/">
+        <a class="Header-link" href={resolve("/")}>
             <Logo /><span class="ml-2">Top commiters</span>
         </a>
     </h1>
