@@ -14,7 +14,7 @@
         "format:fix": "prettier --write ."
     },
     "devDependencies": {
-        "@eslint/compat": "^2.0.0",
+        "@eslint/compat": "^2.0.2",
         "@eslint/js": "^9.39.2",
         "@octokit/auth-app": "^8.1.1",
         "@octokit/core": "^7.0.5",
@@ -34,7 +34,7 @@
         "eslint-config-prettier": "^10.1.2",
         "eslint-plugin-perfectionist": "^5.2.0",
         "eslint-plugin-svelte": "^3.5.1",
-        "globals": "^16.0.0",
+        "globals": "^17.3.0",
         "prettier": "^3.5.3",
         "prettier-plugin-svelte": "^3.3.3",
         "svelte": "^5.28.2",
