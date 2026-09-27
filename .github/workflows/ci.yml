@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: ./.github/actions/setup-project
+      - run: pnpm run format
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: ./.github/actions/setup-project
+      - run: pnpm run lint
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: ./.github/actions/setup-project
+      - run: |
+          echo "GH_APP_ID=''" >> .env
+          echo "GH_APP_PRIVATE_KEY=''" >> .env
+          echo "GH_INSTALLATION_ID=''" >> .env
+      - run: pnpm run gen:cf-types
+      - run: pnpm run check
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: ./.github/actions/setup-project
+      - run: |
+          echo "GH_APP_ID=''" >> .env
+          echo "GH_APP_PRIVATE_KEY=''" >> .env
+          echo "GH_INSTALLATION_ID=''" >> .env
+      - run: pnpm run build

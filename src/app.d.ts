@@ -1,4 +1,4 @@
-import "@poppanator/sveltekit-svg/dist/svg";
+import "@poppanator/sveltekit-svg/dist/svg.d.ts";
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces

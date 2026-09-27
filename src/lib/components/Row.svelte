@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type { RankingType } from "$lib/rankingTypes";
-    import type User from "$lib/User";
+    import type { RankingType } from "$lib/rankingTypes.js";
+    import type User from "$lib/User.js";
 
-    import { rankingTypes } from "$lib/rankingTypes";
+    import { rankingTypes } from "$lib/rankingTypes.js";
 
     import Octicon from "./Octicon.svelte";
 

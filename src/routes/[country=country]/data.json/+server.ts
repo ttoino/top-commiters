@@ -1,11 +1,11 @@
-import type Response from "$lib/Response";
-import type User from "$lib/User";
+import type Response from "$lib/Response.js";
+import type User from "$lib/User.js";
 
 import { json } from "@sveltejs/kit";
-import countries from "$lib/countries.json";
-import { octokit } from "$lib/server/gh";
+import countries from "$lib/countries.json" with { type: "json" };
+import { getOctokit } from "$lib/server/gh.js";
 
-import type { EntryGenerator, RequestHandler } from "./$types";
+import type { EntryGenerator, RequestHandler } from "./$types.js";
 
 export const prerender = true;
 
@@ -53,7 +53,7 @@ export const GET: RequestHandler = async ({ fetch, params }) => {
     let minFollowers: number | undefined = undefined;
 
     try {
-        const { search } = await octokit.graphql.paginate<Search>(
+        const { search } = await getOctokit().graphql.paginate<Search>(
             `query($cursor: String, $q: String!) {
                 search(query: $q, type: USER, after: $cursor, first: 10) {
                     nodes {

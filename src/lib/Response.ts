@@ -1,11 +1,18 @@
-import type countries from "./countries.json";
-import type User from "./User";
+import type User from "./User.js";
 
 export default interface Response {
-    country: (typeof countries)[keyof typeof countries];
+    country: Country;
     countryCode: string;
     minFollowers: number;
     numberOfUsers: number;
     updatedAt: string;
     users: User[];
+}
+
+interface Country {
+    alias: string[];
+    code: string;
+    except?: string[];
+    flag: string;
+    name: string;
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { resolve } from "$app/paths";
-    import countries from "$lib/countries.json";
+    import countries from "$lib/countries.json" with { type: "json" };
     import { MetaTags } from "svelte-meta-tags";
 
     let value = $state("");

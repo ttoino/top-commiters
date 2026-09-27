@@ -1,14 +1,35 @@
-.DS_Store
+.direnv
 node_modules
-/build
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
 /.svelte-kit
-/package
+/build
+/dist
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
 .env
 .env.*
-.direnv
 !.env.example
-.vercel
-.output
+!.env.test
+
+# Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-*.pem
+
+# Vitest
+.vitest-attachments
+
+# Cloudflare Types
+worker-configuration.d.ts
+
+# Wrangler
+.dev.vars*
+!.dev.vars.example

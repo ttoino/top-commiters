@@ -4,7 +4,7 @@
         type RankingType,
         rankingTypeIndices,
         rankingTypes,
-    } from "$lib/rankingTypes";
+    } from "$lib/rankingTypes.js";
 
     let {
         current,

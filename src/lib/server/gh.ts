@@ -9,8 +9,8 @@ import {
     GH_INSTALLATION_ID,
 } from "$env/static/private";
 
-export const octokit = new (Octokit.plugin(paginateGraphQL, retry, throttling))(
-    {
+export const getOctokit = () =>
+    new (Octokit.plugin(paginateGraphQL, retry, throttling))({
         auth: {
             appId: GH_APP_ID,
             installationId: parseInt(GH_INSTALLATION_ID),
@@ -27,5 +27,4 @@ export const octokit = new (Octokit.plugin(paginateGraphQL, retry, throttling))(
             onSecondaryRateLimit: () => true,
         },
         userAgent: "commits.toino.pt",
-    },
-);
+    });

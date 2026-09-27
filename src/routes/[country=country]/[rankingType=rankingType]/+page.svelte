@@ -1,10 +1,10 @@
 <script lang="ts">
     import RankingsSelect from "$lib/components/RankingsSelect.svelte";
     import Row from "$lib/components/Row.svelte";
-    import { rankingTypes } from "$lib/rankingTypes";
+    import { rankingTypes } from "$lib/rankingTypes.js";
     import { MetaTags } from "svelte-meta-tags";
 
-    import type { PageData } from "./$types";
+    import type { PageData } from "./$types.js";
 
     let {
         data,

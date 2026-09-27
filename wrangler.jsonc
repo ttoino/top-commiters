@@ -1,0 +1,28 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "top-commiters",
+    "main": ".svelte-kit/cloudflare/_worker.js",
+    "assets": {
+        "binding": "ASSETS",
+        "directory": ".svelte-kit/cloudflare",
+        "not_found_handling": "none",
+    },
+    "compatibility_date": "2026-05-24",
+    "compatibility_flags": ["nodejs_compat"],
+    "workers_dev": true,
+    "preview_urls": true,
+    "previews": {},
+    "build": {
+        "command": "pnpm build",
+    },
+    "upload_source_maps": true,
+    "observability": {
+        "enabled": true,
+        "logs": {
+            "enabled": true,
+        },
+        "traces": {
+            "enabled": true,
+        },
+    },
+}
