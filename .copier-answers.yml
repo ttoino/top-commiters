@@ -1,10 +1,9 @@
 # Changes here will be overwritten by Copier
-_commit: 9d8682a
-_src_path: /home/toino/Projects/github/ttoino/templates
-browser_tests: false
+_commit: 06010c1
+_src_path: gh:ttoino/templates
 description: A website that shows the top 100 github users per country.
 name: top-commiters
+project_type: sveltekit
 tailwind: false
 tests: false
-type: sveltekit
 

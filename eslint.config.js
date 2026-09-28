@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import ts from "typescript-eslint";
 
 import svelteConfig from "./svelte.config.js";
+
 const gitignorePath = fileURLToPath(new URL("./.gitignore", import.meta.url));
 
 export default ts.config(
@@ -50,6 +51,7 @@ export default ts.config(
             ]),
         ),
     },
+
     ...svelte.configs.all,
     {
         rules: {
@@ -82,6 +84,7 @@ export default ts.config(
             },
         },
     },
+
     prettier,
     ...svelte.configs.prettier,
 );
