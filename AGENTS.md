@@ -4,8 +4,8 @@
 
 A website that shows the top 100 github users per country.
 
-**Type**: sveltekit + SvelteKit 2 + Svelte 5
-**Runtime**: Cloudflare Workers
+**Type**: SvelteKit app
+**Runtime**: Cloudflare Workers / Pages
 **Package Manager**: pnpm 11.2.2
 
 ## Development Environment
@@ -40,7 +40,7 @@ nix develop
 GitHub Actions runs independent jobs on PRs/pushes to `main`/`develop`:
 
 1. `format` — Prettier formatting
-2. `lint` — ESLint with TypeScript, Svelte and Perfectionist
+2. `lint` — ESLint with TypeScript, Svelte, and Perfectionist
 3. `typecheck` — `svelte-check` (requires `gen:cf-types` first)
 4. `build` — Production build
 
@@ -78,4 +78,4 @@ This project uses **Renovate** for dependency updates. Renovate opens a single m
 
 ## Deployment
 
-Cloudflare Workers via Wrangler. The demo/site is deployed through the Cloudflare dashboard, not via CI.
+Cloudflare Workers/Pages via Wrangler. The demo/site is deployed through the Cloudflare dashboard, not via CI.

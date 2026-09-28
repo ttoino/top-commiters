@@ -7,6 +7,7 @@
     },
     "schedule": ["* 0-3 1 * *"],
     "prConcurrentLimit": 4,
+    "minimumReleaseAge": "1 day",
     "lockFileMaintenance": {
         "enabled": true,
         "automerge": true,
@@ -28,10 +29,6 @@
             "groupName": "github actions",
             "matchManagers": ["github-actions"],
             "automerge": true
-        },
-        {
-            "matchPackageNames": ["pnpm"],
-            "minimumReleaseAge": "1 day"
         }
     ]
 }

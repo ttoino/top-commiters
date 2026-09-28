@@ -1,21 +1,12 @@
 name: Setup project
-description: Checks out the repo and installs pnpm, Node.js, and dependencies
+description: Installs pnpm, Node.js, and dependencies
 
 runs:
   using: composite
   steps:
-    - name: Checkout
-      uses: actions/checkout@v6
-
-    - name: Install pnpm
-      uses: pnpm/action-setup@v6
-
-    - name: Install node
-      uses: actions/setup-node@v6
+    - name: Install pnpm and Node.js
+      uses: pnpm/setup@v3
       with:
-        node-version: 22
-        cache: pnpm
-
-    - name: Install dependencies
-      run: pnpm install --frozen-lockfile
-      shell: bash
+        runtime: node@22
+        require-lockfile: true
+        cache: true
