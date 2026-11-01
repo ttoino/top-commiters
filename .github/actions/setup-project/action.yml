@@ -7,6 +7,6 @@ runs:
     - name: Install pnpm and Node.js
       uses: pnpm/setup@v3
       with:
-        runtime: node@22
+        runtime: node@26
         require-lockfile: true
         cache: true
